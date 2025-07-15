@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs; [
     vscode
-    jetbrains.idea-ultimate
+    #jetbrains.idea-ultimate
     discord
     spotify
     obsidian
