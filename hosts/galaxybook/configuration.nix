@@ -6,7 +6,8 @@
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default  # Import Home Manager module
       ./../../modules/nixos/maintainence.nix 
-      ./../../modules/nixos/display-managers/sddm.nix      
+      ./../../modules/nixos/display-managers/sddm.nix     
+      ./../../modules/nixos/nextcloud.nix 
     ];
 
 
