@@ -7,8 +7,7 @@
       inputs.home-manager.nixosModules.default  # Import Home Manager module
       ./../../modules/nixos/maintainence.nix 
       ./../../modules/nixos/display-managers/sddm.nix     
-      #./../../modules/nixos/nextcloud.nix 
-      ./../../modules/nixos/tailscale.nix 
+      ./../../modules/nixos/server/default.nix 
     ];
 
 
@@ -28,7 +27,7 @@
     initrd.verbose = false;
     loader = {
       efi.canTouchEfiVariables = true;
-      timeout = null;
+      timeout = 5;
       grub = {
         enable = true;
         efiSupport = true;
