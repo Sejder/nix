@@ -2,11 +2,12 @@
 
 {
   imports = [
-    #./cloudflared.nix
     ./tailscale.nix
-    # ./duckdns/default.nix
-    # ./nextcloud.nix
+    #./nextcloud/default.nix
     ./openssh.nix
+    #./immich/default.nix
+    ./nginx.nix
   ];
 
+  
 }

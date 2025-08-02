@@ -1,17 +1,9 @@
 { config, pkgs, lib, ... }:
-let
-  tailscaleHostName = "${config.networking.hostName}.at-ling.ts.net";
-  cloudHostName = "cloud.${tailscaleHostName}";
-in
+
 {
   environment.etc."nextcloud-admin-pass".text = "PWD";
 
-  services.nginx.enable = true;
   
-  #services.nginx.virtualHosts."${config.services.nextcloud.hostName}".listen = [ {
-  #  addr = "127.0.0.1";
-  #  port = 8080; # NOT an exposed port
-  #} ];
 
   services.nextcloud = {
     enable = true;
@@ -25,12 +17,10 @@ in
 
     settings = 
     {
-      overwriteprotocol = "http";
-      overwrite.cli.url = cloudHostName;
       trusted_domains = [
-        cloudHostName
         "localhost"
         "127.0.0.1"
+        "nixos"
       ];
       enabledPreviewProviders = [
         "OC\\Preview\\BMP"
