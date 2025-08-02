@@ -28,4 +28,4 @@ def redirect_service(service):
 
 if __name__ == "__main__":
     # Binding to '0.0.0.0' allows access via localhost and network IP
-    app.run(host="127.0.0.1", port=5000)
+    app.run(host="0.0.0.0", port=5000)
