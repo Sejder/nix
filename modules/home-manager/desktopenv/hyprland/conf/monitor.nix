@@ -15,7 +15,6 @@
 {
   home.file.".config/hypr/conf/monitor.conf".text = ''
     # Monitor Configuration for Hyprland
-    monitor=,preferred,auto,1
-    monitor = DP-4, highres@highrr, auto-up, 1
+    monitor=,preferred,auto,auto
   '';
 }
