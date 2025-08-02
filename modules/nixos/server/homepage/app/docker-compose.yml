@@ -1,0 +1,10 @@
+services:
+  flask-app:
+    build: .
+    container_name: flask-app
+    ports:
+      - "5000:5000"  # Flask app accessible via port 5000 on localhost
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development
+    restart: always
