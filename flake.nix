@@ -17,7 +17,7 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
 
-      hostnames = [ "slimbook" "galaxybook" ];
+      hostnames = [ "slimbook" "galaxybook" "ideapad" ];
 
       mkHost = hostname: nixpkgs.lib.nixosSystem {
         inherit system;
