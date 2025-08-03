@@ -45,7 +45,7 @@
     };
   };
 
-  networking.hostName = "nixos"; # Define hostname
+  networking.hostName = "ideapad"; # Define hostname
   networking.networkmanager.enable = true;  # Enable NetworkManager
 
   # Set the timezone and locale
