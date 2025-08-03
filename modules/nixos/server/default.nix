@@ -3,11 +3,12 @@
 {
   imports = [
     ./tailscale.nix
-    #./nextcloud/default.nix
+    ./nextcloud.nix
     ./openssh.nix
-    #./immich/default.nix
+    ./immich.nix
     ./nginx.nix
   ];
+
 
   
 }

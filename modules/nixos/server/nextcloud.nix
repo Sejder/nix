@@ -7,7 +7,7 @@
 
   services.nextcloud = {
     enable = true;
-    hostName = "localhost";
+    hostName = "cloud.home";
     package = pkgs.nextcloud31;
 
     config = {
@@ -20,7 +20,7 @@
       trusted_domains = [
         "localhost"
         "127.0.0.1"
-        "nixos"
+        "cloud.home"
       ];
       enabledPreviewProviders = [
         "OC\\Preview\\BMP"
