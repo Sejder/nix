@@ -7,8 +7,9 @@
       inputs.home-manager.nixosModules.default  # Import Home Manager module
       ./../../modules/nixos/maintainence.nix 
       ./../../modules/nixos/display-managers/sddm.nix     
-      ./../../modules/nixos/server/default.nix 
     ];
+
+  services.tailscale.enable = true;
 
 
   services.power-profiles-daemon.enable = true;  

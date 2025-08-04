@@ -8,5 +8,6 @@
     spotify
     obsidian
     gparted
+    nextcloud-client
   ];
 }
