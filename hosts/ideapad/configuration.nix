@@ -28,7 +28,7 @@
     initrd.verbose = false;
     loader = {
       efi.canTouchEfiVariables = true;
-      timeout = 5;
+      timeout = null;
       grub = {
         enable = true;
         efiSupport = true;

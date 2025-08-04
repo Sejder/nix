@@ -9,6 +9,6 @@
     ./nginx.nix
   ];
 
-
+  programs.nix-ld.enable = true;
   
 }
