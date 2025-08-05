@@ -28,8 +28,9 @@
         };
 
         modules = [
-          ./hosts/${hostname}/configuration.nix
           home-manager.nixosModules.default
+          ./hosts/${hostname}/configuration.nix
+          ./hosts/common/core/default.nix
         ];
       };
     in {

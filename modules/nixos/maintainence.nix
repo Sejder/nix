@@ -16,13 +16,12 @@
 
   nix.gc = {
     automatic = true;
-    dates = "00:01";
+    dates = "01:00";
     options = "--delete-older-than 10d";
   };
   nix.optimise = {
     automatic = true;
-    dates = [ "05:00" ]; 
+    dates = [ "03:00" ]; 
   };
-
 
 }

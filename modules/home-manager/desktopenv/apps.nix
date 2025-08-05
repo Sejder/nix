@@ -9,5 +9,6 @@
     obsidian
     gparted
     nextcloud-client
+    vlc
   ];
 }
