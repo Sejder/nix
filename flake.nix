@@ -4,8 +4,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    home-manager.url = "github:nix-community/home-manager/release-unstable";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
   };
@@ -13,15 +15,14 @@
   outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }@inputs:
     let
       system = "x86_64-linux";
+      lib = nixpkgs.lib.extend (self: super: { custom = import ./lib { inherit (nixpkgs) lib; }; });
+
 
       mkHost = hostName: nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs; }; 
+        specialArgs = { inherit inputs lib; }; 
         modules = [
-          ./hosts/${hostName}               
-          ./users/mikke.nix                 
-          ./modules/nixos/core/boot/grub.nix
-          ./modules/nixos/core/display-managers/sddm.nix
+          ./hosts/${hostName}/configuration.nix                             
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
