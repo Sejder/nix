@@ -13,9 +13,13 @@
   };
 
 
-  home.username = "mikke";
-  home.homeDirectory = "/home/mikke";
-  home.stateVersion = "25.05";
+  home = {
+    username = "mikke";
+
+    homeDirectory = "/home/${config.home.username}";
+
+    stateVersion = "25.05";
+  }
 
   programs.home-manager.enable = true;
 }
