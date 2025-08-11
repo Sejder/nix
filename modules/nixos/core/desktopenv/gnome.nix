@@ -11,5 +11,9 @@ in
     services.displayManager.gdm.enable = true;
     services.desktopManager.gnome.enable = true;
     services.xserver.enable = true;
+    systemd.services."getty@tty1".enable = false;
+    systemd.services."autovt@tty1".enable = false;
+    services.xserver.displayManager.autoLogin.enable = true;
+    services.xserver.displayManager.autoLogin.user = "mikke";
   };
 }
