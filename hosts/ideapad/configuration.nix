@@ -4,7 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./../../modules/nixos
+      ../../modules/nixos
     ];
 
   networking.hostName = "ideapad";
@@ -14,6 +14,12 @@
     
     desktopenv.gnome.enable = true;
 
+  };
+
+  users.users = {
+    mikke = {
+      extraGroups = [ "networkmanagaer" ];
+    };
   };
 
   system.stateVersion = "24.11";

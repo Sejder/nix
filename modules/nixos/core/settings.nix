@@ -21,8 +21,6 @@
   services.printing.enable = true;
   networking.networkmanager.enable = true;
 
-  { config, pkgs, inputs,  ... }:
-
   system.autoUpgrade = {
     enable = true;
     flake = inputs.self.outPath;
