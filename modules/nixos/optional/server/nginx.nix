@@ -4,11 +4,11 @@ let
   cfg = config.features.server.nginx;
 in
 {
-  options.features.server.nginx.enable = mkOption {
+  options.features.server.nginx.enable = lib.mkOption {
     type = lib.types.bool;
     default = config.features.server.enable;
     description = "Enable nginx as proxy manager";
-  }
+  };
 
   config = lib.mkIf cfg.enable {
     services.nginx = {

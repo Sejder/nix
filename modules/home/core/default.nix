@@ -1,5 +1,5 @@
 { pkgs, lib, ... }:
 
 {
-  imports = lib.custom.scanPaths ./.;
+  imports = lib.custom.scanPathsRecursive ./.;
 }
