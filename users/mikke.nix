@@ -10,6 +10,9 @@
 
     browsers.firefox.enable = true;
 
+    desktopenv.hyprland.enable = true;
+
+
   };
 
 

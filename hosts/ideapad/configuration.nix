@@ -12,16 +12,10 @@
   features = {
     settings.audio.enable = true;
     
-    desktopenv.gnome.enable = true;
 
   };
 
-  users.users = {
-    mikke = {
-      extraGroups = [ "networkmanagaer" ];
-    };
-  };
 
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.05";
 
 }
