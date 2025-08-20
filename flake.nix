@@ -21,11 +21,17 @@
       modules = [
         ./hosts/${hostName}/configuration.nix
         home-manager.nixosModules.home-manager
-        {
+
+        ({ config, ... }: {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+
           home-manager.users.mikke = import ./users/mikke.nix;
-        }
+
+          home-manager.extraSpecialArgs = {
+            hostName = config.networking.hostName;
+          };
+        })
       ];
     };
   in {
