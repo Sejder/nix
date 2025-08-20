@@ -10,11 +10,7 @@
   networking.hostName = "ideapad";
 
   features = {
-    locale.dk = true;
-
-    settings.audio.enable = true;
-    
-    desktopenv.hyprland.enable = true;
+    #desktopenv.hyprland.enable = true;
   };
 
 

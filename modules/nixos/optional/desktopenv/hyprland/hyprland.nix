@@ -6,7 +6,7 @@ in
   options.features.desktopenv.hyprland = {
     enable = lib.mkOption {
       type = lib.types.bool;
-      default = config.home-manager.users.mikke.features.desktopenv.hyprland;
+      default = config.home-manager.users.mikke.features.desktopenv.hyprland.enable;
       description = "Enable hyprland";
     };
   };

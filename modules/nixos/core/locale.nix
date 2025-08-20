@@ -4,9 +4,13 @@ let
   cfg = config.features.locale.dk;
 in
 {
-  options.features.locale.dk = lib.mkEnableOption "Enable Danish locale, timezone, and keymaps";
+  options.features.locale.dk.enable = lib.mkOption {
+    type = lib.types.bool;
+    default = true;
+    description = "Enable dansh timezone and keymaps";
+  };
 
-  config = lib.mkIf cfg {
+  config = lib.mkIf cfg.enable {
     time.timeZone = "Europe/Copenhagen";
 
     i18n.defaultLocale = "en_DK.UTF-8";

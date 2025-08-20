@@ -5,8 +5,11 @@ let
   cfg = config.features.settings.audio;
 in
 {
-  options.features.settings.audio.enable = 
-    lib.mkEnableOption "Enable audio services";
+  options.features.settings.audio.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = "Enable audio";
+  };
   
   config = lib.mkIf cfg.enable {
     services.pulseaudio.enable = false;
