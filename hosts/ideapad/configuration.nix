@@ -9,6 +9,8 @@
 
   networking.hostName = "ideapad";
 
+  device = "laptop";
+
   features = {
     #desktopenv.hyprland.enable = true;
   };
