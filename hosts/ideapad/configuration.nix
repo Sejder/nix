@@ -12,7 +12,7 @@
   features = {
     settings.audio.enable = true;
     
-
+    desktopenv.hyprland.enable = true;
   };
 
 

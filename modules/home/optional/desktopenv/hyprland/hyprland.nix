@@ -39,23 +39,63 @@ in
         # Variables
         "$SCRIPTS" = "~/.config/hypr/scripts/";
         "$mainMod" = "SUPER";
-        
-        # Default applications
         "$terminal" = "kitty";
         "$filemanager" = "nautilus";
         "$menu" = "rofi -show drun";
         "$browser" = "firefox";
         "$HOME" = "~/home/mikke";
 
+        # Environment
+        env = [
+          "XCURSOR_SIZE,24"
+          "HYPRCURSOR_SIZE,24"
+        ];
+
         # Monitor Configuration
-        # Follows the format: monitor = name, resolution@framerate, position, scale
-        # Find monitors by using hyprctl monitors all
-        # Resolution can be highres, framerate can be highrr
-        # Available positions are: auto, auto-down/up/left/right
         monitor = [
           ",preferred,auto,auto"
         ];
 
+        # General
+        general = {
+          gaps_in = 5;
+          gaps_out = 0;
+          border_size = 2;
+          "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+          "col.inactive_border" = "rgba(595959aa)";
+          resize_on_border = false;
+          allow_tearing = false;
+          layout = "dwindle";
+        };
+
+        dwindle = {
+          pseudotile = true;
+          preserve_split = true;
+        };
+
+        master = {
+          new_status = "master";
+        };
+
+        misc = {
+          force_default_wallpaper = 0;
+          disable_hyprland_logo = false;
+        };
+
+        input = {
+          kb_layout = "dk";
+          kb_variant = "";
+          kb_model = "";
+          kb_options = "";
+          kb_rules = "";
+          follow_mouse = 1;
+          sensitivity = 0;
+          touchpad = {
+            natural_scroll = true;
+          };
+        };
+
+        # Animations
         animations = {
           enabled = true;
           bezier = [
@@ -75,7 +115,8 @@ in
             "workspaces, 1, 3, wind"
           ];
         };
-        
+
+        # Decorations
         decoration = {
           rounding = 10;
           active_opacity = 1.0;
@@ -88,7 +129,6 @@ in
             new_optimizations = true;
             ignore_opacity = true;
             xray = true;
-            # blurls = waybar
           };
           shadow = {
             enabled = true;
@@ -98,7 +138,7 @@ in
           };
         };
 
-        # Key bindings
+        # Keybindings
         bind = [
           # Applications
           "$mainMod, RETURN, exec, $terminal"
@@ -192,32 +232,29 @@ in
 
         # Window rules
         windowrulev2 = [
-          # nmtui
           "float, title:^(Network Manager)$"
           "center, title:^(Network Manager)$"
           "movecursor, title:^(Network Manager)$"
           "stayfocused, title:^(Network Manager)$"
-          
-          # pavucontrol
+
           "float, title:^(Volume Control)$"
           "center, title:^(Volume Control)$"
           "movecursor, title:^(Volume Controls)$"
           "stayfocused, title:^(Volume Control)$"
-          
-          # blueman-manager
+
           "float, title:^(Bluetooth Devices)$"
           "center, title:^(Bluetooth Devices)$"
           "movecursor, title:^(Bluetooth Devices)$"
           "stayfocused, title:^(Bluetooth Devices)$"
         ];
 
-        # Autostart applications
+        # Autostart
         exec-once = [
           "~/.config/nwg-dock-hyprland/launch.sh"
           "swaync"
           "hyprpaper"
-          "systemctl --user start hyprpolkitagent" 
-          "hyprctl setcursor Bibata-Modern-Ice 24" 
+          "systemctl --user start hyprpolkitagent"
+          "hyprctl setcursor Bibata-Modern-Ice 24"
           "swayosd-server"
           "nextcloud"
           "waybar"
