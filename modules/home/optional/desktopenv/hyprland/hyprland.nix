@@ -261,5 +261,9 @@ in
         ];
       };
     };
+
+    services.swayosd = {
+        enable = true;
+    };
   };
 }
