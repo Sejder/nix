@@ -4,31 +4,11 @@ let
 in
 {
   options.features.desktopenv.hyprland = {
-    enable = lib.mkEnableOption "Hyprland";
-
-    #waybar.enable = lib.mkOption {
-    #  type = lib.types.bool;
-    #  default = cfg.enable;
-    #  description = "Enable waybar";
-    #};
-
-    #hypridle.enable = lib.mkOption {
-    #  type = lib.types.bool;
-    #  default = cfg.enable;
-    #  description = "Enable Hypridle";
-    #};
-
-    #hyprlock.enable = lib.mkOption {
-    #  type = lib.types.bool;
-    #  default = cfg.enable;
-    #  description = "Enable Hyprlock";
-    #};
-
-    #kitty.enable = lib.mkOption {
-    #  type = lib.types.bool;
-    #  default = cfg.enable;
-    #  description = "Enable Kitty";
-    #};
+    enable = lib.mkOption {
+      type = lib.types.bool;
+      default = config.home-manager.users.mikke.features.desktopenv.hyprland;
+      description = "Enable hyprland";
+    };
   };
 
   config = lib.mkIf cfg.enable {
