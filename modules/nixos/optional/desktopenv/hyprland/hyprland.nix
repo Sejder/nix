@@ -21,13 +21,17 @@ in
 
     services.displayManager.defaultSession = "hyprland-uwsm";
 
-    features.displayManagers.sddm.enable = true;
-
     services.blueman.enable = true;
 
     environment.systemPackages = with pkgs; [
       bluez
     ];
+
+    features = {
+      displayManager.sddm.enable = true;
+
+      fileManagers.nautilus.enable = true;
+    };
   };
 }
 
