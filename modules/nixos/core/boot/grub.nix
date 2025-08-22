@@ -25,7 +25,7 @@
         '';
         default = "0";
         splashImage = null;
-        #theme = ./../../modules/nixos/grub-themes/Particle-window;
+        theme = ../../../../assets/grubThemes/Particle-window/2k;
       };
     };
   }; 

@@ -18,7 +18,6 @@ in
 
         "modules-right" = [
             "group/expand"
-            "custom/onedrive"
             "pulseaudio"
             "bluetooth"
             "network"
@@ -68,7 +67,7 @@ in
             "format-disabled" = " 󰂲 ";
             "format-connected-battery" = " {num_connections} 󰂯 ";
             "format-alt" = " 󰂯 ";
-            "tooltip-format" = "{controller_alias} ({device_battery_percentage}%) ";
+            "tooltip-format" = "{controller_alias} ({device_enumerate}%) ";
             "on-click" = "blueman-manager";
         };
         "pulseaudio" = {
@@ -318,6 +317,7 @@ in
 
     home.packages = with pkgs; [
       wlogout
+      pavucontrol
     ];
   };
 }
