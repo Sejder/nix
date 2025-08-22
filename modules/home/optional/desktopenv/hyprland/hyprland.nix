@@ -268,5 +268,7 @@ in
     home.packages = with pkgs; [
       bibata-cursors
     ];
+
+    features.applicationLaunchers.rofi.enable = true;
   };
 }
