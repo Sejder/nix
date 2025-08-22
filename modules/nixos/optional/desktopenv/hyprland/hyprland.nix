@@ -19,6 +19,9 @@ in
       xwayland.enable = true;
     };
 
+    services.displayManager.defaultSession = "hyprland-uwsm";
+
+    features.displayManagers.sddm.enable = true;
   };
 }
 

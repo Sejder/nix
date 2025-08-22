@@ -47,6 +47,7 @@ in
 
         # Environment
         env = [
+          "XCURSOR_THEME,Bibata-Modern-Ice"
           "XCURSOR_SIZE,24"
           "HYPRCURSOR_SIZE,24"
         ];
@@ -144,8 +145,6 @@ in
           "$mainMod, RETURN, exec, $terminal"
           "$mainMod, B, exec, $browser"
           "$mainMod, F, exec, $filemanager"
-          "$mainMod CTRL, E, exec, ~/.config/ml4w/settings/emojipicker.sh"
-          "$mainMod CTRL, C, exec, ~/.config/ml4w/settings/calculator.sh"
           "$mainMod, space, exec, rofi -show drun"
           "$mainMod, C, exec, code"
           "$mainMod, O, exec, obsidian"
@@ -265,5 +264,9 @@ in
     services.swayosd = {
         enable = true;
     };
+
+    home.packages = with pkgs; [
+      bibata-cursors
+    ];
   };
 }

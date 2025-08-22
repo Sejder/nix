@@ -12,7 +12,6 @@
 
     desktopenv.hyprland.enable = true;
 
-
   };
 
 
@@ -22,6 +21,10 @@
     homeDirectory = "/home/${config.home.username}";
 
     stateVersion = "25.05";
+
+    packages = with pkgs; [
+      
+    ];
   };
 
   programs.home-manager.enable = true;

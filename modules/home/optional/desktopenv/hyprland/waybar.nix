@@ -25,6 +25,7 @@ in
             "battery"
             "clock"
             "custom/notification"
+            "custom/wlogout"
         ];
         "hyprland/workspaces" = {
             "format" = "{name}";
@@ -108,6 +109,12 @@ in
             "format" = " | ";
             "tooltip" = false;
         };
+        "custom/wlogout" = {
+          "format" = "  "; # power icon
+          "tooltip" = "Logout / Power Menu";
+          "on-click" = "wlogout"; # or "wlogout -b 5" for buttons at bottom
+          "escape" = true;
+        };
         "group/expand" = {
             "orientation" = "horizontal";
             "drawer" = {
@@ -117,8 +124,6 @@ in
             };
             "modules" = [
                 "custom/expand"
-                "custom/colorpicker"
-                "custom/power-profile"
                 "cpu"
                 "memory"
                 "temperature"
@@ -192,8 +197,6 @@ in
         #pulseaudio,
         #memory,
         #tray,
-        #custom-onedrive,
-        #custom-power-profile,
         #temperature {
           color: white;
           background: alpha(#0A0B0F, .6);
@@ -210,8 +213,6 @@ in
         #cpu:hover,
         #pulseaudio:hover,
         #memory:hover,
-        #custom-onedrive:hover,
-        #custom-power-profile:hover,
         #clock:hover,
         #temperature:hover {
           color: #1E90FF;
@@ -301,8 +302,23 @@ in
         #workspaces button.empty.active {
           text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
         }
+        #custom-wlogout {
+          color: #ffffff;
+          background: alpha(#0A0B0F, .6);
+          border-radius: 10px;
+          margin: 2px;
+          padding: 0 8px;
+        }
+        #custom-wlogout:hover {
+          color: #ffffff;
+        }
+
       '';
     };
+
+    home.packages = with pkgs; [
+      wlogout
+    ];
   };
 }
 
