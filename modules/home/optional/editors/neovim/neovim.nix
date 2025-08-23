@@ -22,8 +22,16 @@ in
       withNodeJs = true;
 
       extraLuaConfig = ''
+        vim.cmd("set expandtab")
+        vim.cmd("set tabstop=2")
+        vim.cmd("set softtabstop=2")
+        vim.cmd("set shiftwidth=2")
+        vim.cmd("set number")
+        vim.cmd("set relativenumber")
+        vim.cmd("set smartindent")
+        vim.g.mapleader = " "
+        
         require("lazy-bootstrap")
-        require("options")
         require("lazy").setup("plugins")
       '';
 
@@ -74,6 +82,19 @@ in
           '';
         }
 
+        {
+          plugin = pkgs.vimPlugins.everforest;
+          config = ''
+            lua << EOF
+            vim.g.everforst_background = medium
+            vim.cmd.colorscheme("everforest")
+            EOF
+          '';
+        }
+
+        #{
+
+        #}
         # Completion plugin
         pkgs.vimPlugins.nvim-cmp
         pkgs.vimPlugins.cmp-nvim-lsp
