@@ -6,7 +6,10 @@
   ];
 
   features = {
-    editors.vscode.enable = true;
+    editors = {
+      vscode.enable = true;
+      neovim.enable = true;
+    };
 
     browsers.firefox.enable = true;
 

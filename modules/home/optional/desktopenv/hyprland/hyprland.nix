@@ -251,7 +251,7 @@ in
             "float, title:^(Bluetooth Devices)$"
             "center, title:^(Bluetooth Devices)$"
             "movecursor, title:^(Bluetooth Devices)$"
-            "stayfocused, title:^(Bluetooth Devices)$"
+            #"stayfocused, title:^(Bluetooth Devices)$"
           ];
 
           # Autostart
