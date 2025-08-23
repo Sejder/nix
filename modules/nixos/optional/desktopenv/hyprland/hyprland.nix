@@ -28,7 +28,7 @@ in
     ];
 
     features = {
-      displayManager.sddm.enable = true;
+      displayManagers.sddm.enable = true;
 
       fileManagers.nautilus.enable = true;
     };
