@@ -27,71 +27,7 @@ in
         require("lazy").setup("plugins")
       '';
 
-      plugins = [
-        # LSP config plugin
-        {
-          plugin = pkgs.vimPlugins.nvim-lspconfig;
-          config = ''
-            lua << EOF
-            local lspconfig = require("lspconfig")
-            local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-            -- Configure inline diagnostics
-            vim.diagnostic.config({
-              virtual_text = {
-                prefix = "",
-                spacing = 2,
-              },
-              signs = true,
-              underline = true,
-              update_in_insert = true,
-              severity_sort = true,
-            })
-
-            local function setup(server, opts)
-              opts = opts or {}
-              opts.capabilities = capabilities
-              opts.on_attach = function(_, bufnr)
-                local map = function(mode, lhs, rhs)
-                  vim.keymap.set(mode, lhs, rhs, { buffer = bufnr })
-                end
-                -- LSP keymaps
-                map("n", "gd", vim.lsp.buf.definition)
-                map("n", "K", vim.lsp.buf.hover)
-                map("n", "<leader>rn", vim.lsp.buf.rename)
-                map("n", "<leader>ca", vim.lsp.buf.code_action)
-                map("n", "gr", vim.lsp.buf.references)
-              end
-              lspconfig[server].setup(opts)
-            end
-
-            -- Setup LSP servers
-            setup("pyright")    -- Python
-            setup("nil_ls")     -- Nix
-            setup("jdtls", { cmd = { "jdtls" } }) -- Java
-            setup("clangd")     -- C/C++
-            EOF
-          '';
-        }
-
-        {
-          plugin = pkgs.vimPlugins.everforest;
-          config = ''
-            lua << EOF
-            vim.g.everforst_background = medium
-            vim.cmd.colorscheme("everforest")
-            EOF
-          '';
-        }
-
-        #{
-
-        #}
-        # Completion plugin
-        pkgs.vimPlugins.nvim-cmp
-        pkgs.vimPlugins.cmp-nvim-lsp
-        pkgs.vimPlugins.luasnip
-      ];
+      
     };
 
     home.file.".config/nvim".source = ./config;
