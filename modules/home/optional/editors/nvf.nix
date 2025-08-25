@@ -24,6 +24,15 @@ in
             style = "medium";
           };
 
+          diagnostics = {
+            enable = true;
+            config = {
+              update_in_insert = true;
+              virtual_lines = true;
+              virtual_text = true;
+            };
+          };
+
           statusline = {
             lualine = {
               enable = true;
