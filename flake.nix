@@ -8,9 +8,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+    nvf.url = "github:notashelf/nvf";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, nvf, ... }@inputs:
   let
     system = "x86_64-linux";
     lib = nixpkgs.lib.extend (self: super: { custom = import ./lib { inherit (nixpkgs) lib; }; });
@@ -20,16 +21,26 @@
       specialArgs = { inherit inputs lib; };
       modules = [
         ./hosts/${hostName}/configuration.nix
+        #nvf.nixosModules.default
+        
         home-manager.nixosModules.home-manager
 
         ({ config, ... }: {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
 
-          home-manager.users.mikke = import ./users/mikke.nix;
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users = {
+              mikke = import ./users/mikke.nix;
+            };
 
-          home-manager.extraSpecialArgs = {
-            hostName = config.networking.hostName;
+            extraSpecialArgs = {
+              hostName = config.networking.hostName;
+            };
+
+            sharedModules = [
+              nvf.homeManagerModules.default
+            ];
           };
         })
       ];
@@ -42,7 +53,10 @@
     
     homeConfigurations.mikke = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
-      modules = [ ./users/mikke.nix ];
+      modules = [ 
+        ./users/mikke.nix
+        nvf.homeManagerModules.default
+      ];
     };
   };
 }

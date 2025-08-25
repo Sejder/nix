@@ -8,7 +8,10 @@
   features = {
     editors = {
       vscode.enable = true;
-      neovim.enable = true;
+      
+      
+      neovim.enable = false;
+      nvf.enable = true;
     };
 
     browsers.firefox.enable = true;
