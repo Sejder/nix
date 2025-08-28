@@ -20,7 +20,8 @@ in
 
         # Extra Rofi settings
         extraConfig = {
-          modi = "drun,run";  # Launcher modes
+          modi = "combi";
+          combi-modes = "drun,recursivebrowser";
           show-icons = true;
           sidebar-mode = true;
           font = "JetBrainsMono Nerd Font 12";

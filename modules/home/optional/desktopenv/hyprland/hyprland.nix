@@ -152,12 +152,12 @@ in
             "$mainMod, RETURN, exec, $terminal"
             "$mainMod, B, exec, $browser"
             "$mainMod, F, exec, $filemanager"
-            "$mainMod, space, exec, rofi -show drun"
+            "$mainMod, space, exec, rofi -show combi"
             "$mainMod, C, exec, code"
             "$mainMod, O, exec, obsidian"
             "$mainMod, S, exec, spotify"
             "$mainMod, D, exec, discord"
-            "$mainMod, I, exec, intellij-idea-ultimate-edition"
+            "$mainMod, I, exec, idea-community"
 
             # Windows
             "$mainMod, Q, killactive"

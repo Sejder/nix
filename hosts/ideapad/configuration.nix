@@ -12,9 +12,8 @@
   device = "laptop";
 
   features = {
-    #desktopenv.hyprland.enable = true;
+    nix-ld.enable = true;
   };
-
 
   system.stateVersion = "25.05";
 

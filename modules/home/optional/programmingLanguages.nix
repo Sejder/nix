@@ -22,10 +22,11 @@ in
 
       # Java
       openjdk
+      gradle
 
       # C
       gcc
 
-    ];
+    ];  
   };
 }
