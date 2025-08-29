@@ -1,41 +1,33 @@
 { config, pkgs, ... }:
 
-{
+let
+  isNixOS = config ? nixpkgs;
+in {
   imports = [
     ../modules/home
   ];
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = !isNixOS;
 
   features = {
     editors = {
-      vscode.enable = true;
-      
-      
+      vscode.enable = isNixOS;
       neovim.enable = false;
       nvf.enable = true;
     };
 
-    browsers.firefox.enable = true;
-
-    desktopenv.hyprland.enable = true;
-
-    apps.enable = true;
-
+    browsers.firefox.enable = isNixOS;
+    desktopenv.hyprland.enable = isNixOS;
+    apps.enable = isNixOS;
     programmingLanguages.enable = true;
   };
 
-
   home = {
     username = "mikke";
-
     homeDirectory = "/home/${config.home.username}";
-
     stateVersion = "25.05";
 
-    packages = with pkgs; [
-      
-    ];
+    packages = with pkgs; [ ];
   };
 
   programs.home-manager.enable = true;

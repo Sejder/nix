@@ -35,7 +35,6 @@
             };
             extraSpecialArgs = {
               hostName = config.networking.hostName;
-              inherit lib;
             };
             sharedModules = [
               nvf.homeManagerModules.default
