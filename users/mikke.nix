@@ -5,6 +5,8 @@
     ../modules/home
   ];
 
+  nixpkgs.config.allowUnfree = true;
+
   features = {
     editors = {
       vscode.enable = true;

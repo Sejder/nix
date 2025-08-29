@@ -28,7 +28,7 @@ in
             enable = true;
             config = {
               update_in_insert = true;
-                            virtual_text = true;
+              virtual_text = true;
             };
           };
 
@@ -59,8 +59,18 @@ in
           };
           
           telescope.enable = true;
-          filetree.nvimTree.enable = true;
-
+          filetree.nvimTree = {
+            enable = true;
+            setupOpts = {
+              view = {
+                 width = 30; 
+                 side = "left";
+              };
+              actions = {
+                open_file.resize_window = true;
+              };
+      };
+	  };
           viAlias = true;
           vimAlias = true;
 
