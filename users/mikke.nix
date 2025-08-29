@@ -1,24 +1,19 @@
 { config, pkgs, ... }:
 
-let
-  isNixOS = config ? nixpkgs;
-in {
+{
   imports = [
     ../modules/home
   ];
 
-  nixpkgs.config.allowUnfree = !isNixOS;
-
   features = {
     editors = {
-      vscode.enable = isNixOS;
-      neovim.enable = false;
+      vscode.enable = true;
       nvf.enable = true;
     };
 
-    browsers.firefox.enable = isNixOS;
-    desktopenv.hyprland.enable = isNixOS;
-    apps.enable = isNixOS;
+    browsers.firefox.enable = true;
+    desktopenv.hyprland.enable = true;
+    apps.enable = true;
     programmingLanguages.enable = true;
   };
 
