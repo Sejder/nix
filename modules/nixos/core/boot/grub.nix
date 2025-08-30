@@ -1,10 +1,10 @@
 { config, lib, ... }:
 let
-  cfg = config.settings.boot;
+  cfg = config.features.settings.boot;
 in
 
 {
-  options.settings.boot = {
+  options.features.settings.boot = {
     enable = lib.mkOption {
       type = lib.types.bool;
       default = true;

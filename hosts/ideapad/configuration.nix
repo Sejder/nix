@@ -12,7 +12,7 @@
   device = "laptop";
 
   features = {
-    server.enable = true;
+    server.enable = false;
     nix-ld.enable = true;
   };
 

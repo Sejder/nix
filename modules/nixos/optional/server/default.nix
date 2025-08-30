@@ -17,7 +17,9 @@ in
       };
       settings = {
         audio.enable = false;
+        boot.autoBoot.enable = true;
       };
+      desktopenv.hyprland.enable = false;
     };
 
     services.xserver.enable = false;
