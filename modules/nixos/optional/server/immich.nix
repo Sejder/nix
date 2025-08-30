@@ -1,7 +1,7 @@
 { config, lib, ... }:
 
 let
-  cfg = config.options.server.immich;
+  cfg = config.features.server.immich;
 in
 {
   options.features.server.immich = {

@@ -46,7 +46,7 @@
   in {
     nixosConfigurations = {
       ideapad = mkHost "ideapad";
-      slimbook = mkHost "slimbook";
+      home = mkHost "home";
     };
     homeConfigurations.mikke = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
