@@ -10,7 +10,11 @@ in
   
   config = lib.mkIf cfg.enable {
     features = {
-      nginx.enable = true;
+      server = {
+        nginx.enable = true;
+        nextcloud.enable = true;
+        monitoring.enable = true;
+      };
     };
   };
 }

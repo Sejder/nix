@@ -1,7 +1,7 @@
 { config, lib, ... }:
 
 let
-  cfg = options.features.server.monitoring;
+  cfg = config.features.server.monitoring;
 in
 {
   options.features.server.monitoring = {
