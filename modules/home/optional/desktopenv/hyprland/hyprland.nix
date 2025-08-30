@@ -24,12 +24,6 @@ in
       description = "Enable Hyprlock";
     };
 
-    kitty.enable = lib.mkOption {
-      type = lib.types.bool;
-      default = cfg.enable;
-      description = "Enable Kitty";
-    };
-
     wallpaper.enable = lib.mkOption {
       type = lib.types.bool;
       default = cfg.enable;
@@ -54,7 +48,11 @@ in
         hyprpolkitagent
       ];
 
-      features.applicationLaunchers.rofi.enable = true;
+      features = {
+        applicationLaunchers.rofi.enable = true;
+
+        terminalEmulators.kitty.enable = true;
+      };
     })
 
     (lib.mkIf cfg.wallpaper.enable {
