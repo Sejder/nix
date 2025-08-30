@@ -7,12 +7,13 @@
       ../../modules/nixos
     ];
 
-  networking.hostName = "ideapad";
+  networking.hostName = "home";
 
-  device = "laptop";
+  device = "server";
 
   features = {
     nix-ld.enable = true;
+    server.enable = true;
   };
 
   system.stateVersion = "25.05";

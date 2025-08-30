@@ -22,11 +22,9 @@ in
 
     boot.loader.timeout = 5;
     services.xserver.enable = false;
-    services.xserver.desktopManager.enable = false;
-    services.xserver.displayManager.enable = false;
-    services.getty.autologin = {
-      enable = true;
-      user = "mikke";
+    services.getty = {
+      autologinOnce = true;
+      autologinUser = "mikke";
     };
   };
 }
