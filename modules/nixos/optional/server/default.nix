@@ -20,7 +20,6 @@ in
       };
     };
 
-    boot.loader.timeout = 5;
     services.xserver.enable = false;
     services.getty = {
       autologinOnce = true;

@@ -1,32 +1,53 @@
+{ config, lib, ... }:
+let
+  cfg = config.settings.boot;
+in
+
 {
- # Bootloader setup
-  boot = {
-    plymouth = {
-      enable = true;
+  options.settings.boot = {
+    enable = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = "Enable Boot";
     };
-    consoleLogLevel = 0;  
-    kernelParams = [ 
-      "quiet"
-      "loglevel=0"
-      ];  
-    initrd.verbose = false;
-    loader = {
-      efi.canTouchEfiVariables = true;
-      timeout = null;
-      grub = {
+
+    autoBoot.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Enable autoboot";
+    };
+  };
+
+  config = lib.mkIf cfg.enable {
+    # Bootloader setup
+    boot = {
+      plymouth = {
         enable = true;
-        efiSupport = true;
-        useOSProber = true;
-        device = "nodev";
-        extraEntries = ''
-          menuentry "Reboot into UEFI Firmware Settings" {
-            fwsetup
-          }
-        '';
-        default = "0";
-        splashImage = null;
-        theme = ../../../../assets/grubThemes/Particle-window/2k;
       };
-    };
-  }; 
+      consoleLogLevel = 0;  
+      kernelParams = [ 
+        "quiet"
+        "loglevel=0"
+        ];  
+      initrd.verbose = false;
+      loader = {
+        efi.canTouchEfiVariables = true;
+        timeout = if cfg.autoBoot.enable then 5 else null;
+        grub = {
+          enable = true;
+          efiSupport = true;
+          useOSProber = true;
+          device = "nodev";
+          extraEntries = ''
+            menuentry "Reboot into UEFI Firmware Settings" {
+              fwsetup
+            }
+          '';
+          default = "0";
+          splashImage = null;
+          theme = ../../../../assets/grubThemes/Particle-window/2k;
+        };
+      };
+    }; 
+  };
 }
