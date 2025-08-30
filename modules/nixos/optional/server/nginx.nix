@@ -6,7 +6,7 @@ in
 {
   options.features.server.nginx.enable = lib.mkOption {
     type = lib.types.bool;
-    default = config.features.server.enable;
+    default = false;
     description = "Enable nginx as proxy manager";
   };
 
