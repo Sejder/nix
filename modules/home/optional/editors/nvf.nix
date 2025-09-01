@@ -56,6 +56,11 @@ in
 
           lsp = {
             enable = true;
+            formatOnSave = true;
+          };
+
+          binds = {
+            whichKey.enable = true;
           };
           
           telescope.enable = true;
