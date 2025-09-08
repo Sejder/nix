@@ -24,6 +24,12 @@ in
             style = "medium";
           };
 
+          autopairs = {
+            nvim-autopairs = {
+              enable = true;
+            };
+          };
+
           diagnostics = {
             enable = true;
             config = {

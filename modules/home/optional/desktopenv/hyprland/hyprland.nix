@@ -52,6 +52,8 @@ in
         applicationLaunchers.rofi.enable = true;
 
         terminalEmulators.kitty.enable = true;
+
+        desktopApps.calculator.enable = true;
       };
     })
 
@@ -60,14 +62,18 @@ in
         enable = true;
         settings = {
           preload = [
-            "/home/mikke/nix/assets/wallpapers/sundown-over-sea.jpg"
+            "/etc/wallpapers/sundown-over-sea.jpg"
           ];
           wallpaper = [
-            ",/home/mikke/nix/assets/wallpapers/sundown-over-sea.jpg"
+            ",/etc/wallpapers/sundown-over-sea.jpg"
           ];
           splash = false;
         };
       };
+
+      home.packages = with pkgs; [
+        hyprpaper
+      ];
     })
   ];
   

@@ -47,7 +47,7 @@
 
       misc = {
         force_default_wallpaper = 0;
-        disable_hyprland_logo = false;
+        disable_hyprland_logo = true;
       };
 
       input = {
@@ -60,6 +60,7 @@
         sensitivity = 0;
         touchpad = {
           natural_scroll = true;
+          scroll_factor = 0.4;
         };
       };
     };

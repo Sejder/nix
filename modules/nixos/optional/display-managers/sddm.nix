@@ -26,7 +26,7 @@ in
         flavor = "mocha";
         font  = "Jetbrains Mono";
         fontSize = "18";
-        #background = "${../../../../assets/wallpapers/sundown-over-sea.jpg}";
+        #background = "/etc/wallpapers/sundown-over-sea.jpg";
         #loginBackground = true;
       }
     )];

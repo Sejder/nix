@@ -5,5 +5,5 @@ let
   myLib = import ../../lib { inherit lib; };
 in
 {
-  imports = myLib.scanPathsRecursive ./.;
+  imports = myLib.scanPathsRecursive ./. ++ [../../assets/wallpapers];
 }

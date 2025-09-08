@@ -18,6 +18,12 @@ in
       enable = true;
       userName  = "Mikkelsej";
       userEmail = "mikkel.sejdelin@gmail.com";
+
+      extraConfig = {
+        push = {
+          autoSetupRemote = true;
+        };
+      };
     };
   };
 }

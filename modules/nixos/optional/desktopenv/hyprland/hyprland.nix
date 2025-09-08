@@ -29,7 +29,7 @@ in
 
     features = {
       displayManagers.sddm.enable = true;
-
+      displayManagers.autoLogin.enable = true;
       fileManagers.nautilus.enable = true;
     };
   };
