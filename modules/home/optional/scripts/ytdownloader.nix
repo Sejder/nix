@@ -15,7 +15,7 @@ let
     fi
     
     # Use uv to run yt-dlp with the provided arguments
-    exec ${pkgs.uv}/bin/uv tool run yt-dlp "$@"
+    exec ${pkgs.uv}/bin/uvx --refresh yt-dlp "$@"
   '';
 in
 {

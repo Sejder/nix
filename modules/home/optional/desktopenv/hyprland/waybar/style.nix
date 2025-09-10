@@ -30,7 +30,6 @@ lib.mkIf config.features.desktopenv.hyprland.waybar.enable {
           background: alpha(#0A0B0F, .6);
           border-radius: 10px;
           margin: 5px;
-          padding: 0px;
         }
 
         tooltip {
@@ -119,13 +118,12 @@ lib.mkIf config.features.desktopenv.hyprland.waybar.enable {
           padding: 0 5px;
           background: none;
           border-radius: 10px;
-          margin: 5px;
         }
 
         #workspaces button {
           opacity: 0.6;
           all: unset;
-          padding: 5px 10px;
+          padding: 5 10px;
         }
 
         #workspaces button:hover {
