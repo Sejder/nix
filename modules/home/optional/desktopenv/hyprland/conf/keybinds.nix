@@ -43,6 +43,8 @@
           "$mainMod CTRL, W, exec, waypaper --folder ~/nix/wallpapers"
           "$mainMod CTRL, RETURN, exec, pkill rofi || rofi -show drun -replace -i"
 
+          "$mainMod, L, exec, hyprlock"
+
           # Workspaces
           "$mainMod, 1, workspace, 1"
           "$mainMod, 2, workspace, 2"
@@ -86,6 +88,9 @@
           ", XF86Lock, exec, notify-send h"
           ", CAPS_LOCK, exec, bash -c 'sleep 0.1 && swayosd-client --caps-lock'"
           ", NUM_LOCK, exec, bash -c 'sleep 0.1 && swayosd-client --num-lock'"
+
+          ", switch:on:Lid Switch, exec, hyprctl dispatch dpms off"
+          ", switch:off:Lid Switch, exec, hyprctl dispatch dpms on"
         ];
 
         # Mouse bindings

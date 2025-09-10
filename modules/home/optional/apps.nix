@@ -26,6 +26,7 @@ in
       gparted
       nextcloud-client
       vlc
+      mattermost-desktop
     ];
   };
 }

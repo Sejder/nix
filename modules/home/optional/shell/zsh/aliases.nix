@@ -16,6 +16,8 @@ in
       lt = "eza -a --tree --level=1 --icons=always";
       shutdown = "systemctl poweroff";
 
+      uvr = "uv run python main.py";
+
       wifi = "nmtui";
       logout = "hyprctl dispatch exit";
 

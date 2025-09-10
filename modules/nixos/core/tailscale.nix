@@ -12,7 +12,6 @@ in
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       tailscale
-      ffmpeg_6-full
     ];
 
     services.tailscale = {

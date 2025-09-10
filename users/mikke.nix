@@ -15,6 +15,7 @@
     desktopenv.hyprland.enable = true;
     apps.enable = true;
     programmingLanguages.enable = true;
+    scripts.ytdownloader.enable = true;
   };
 
   home = {
