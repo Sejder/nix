@@ -81,12 +81,12 @@ lib.mkIf config.features.desktopenv.hyprland.waybar.enable {
             "interval" = 30;
             "states" = {
                 "good" = 95;
-                "warning" = 30;
-                "critical" = 10;
+                "warning" = 15;
+                "critical" = 5;
             };
             "format" = "{icon}";
-            "format-charging" = " {capacity}% 󰂄 ";
-            "format-plugged" = " {capacity}% 󰂄 ";
+            "format-charging" = "󰂄";
+            "format-plugged" = "󰂄";
             "format-alt" = " {time} {icon}";
             "tooltip-format" = "{capacity}% Empty in {time}";
             "format-icons" = [

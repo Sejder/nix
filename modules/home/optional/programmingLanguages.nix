@@ -41,8 +41,8 @@ in {
   config = lib.mkMerge [
     (lib.mkIf cfg.python.enable {
       home.packages = with pkgs; [
-        python3Full
         uv
+        python3Minimal
         black
       ];
       programs.nvf.settings.vim.languages.python.enable = true;
