@@ -42,7 +42,7 @@ in {
     (lib.mkIf cfg.python.enable {
       home.packages = with pkgs; [
         uv
-        python3Minimal
+        python312
         black
       ];
       programs.nvf.settings.vim.languages.python.enable = true;

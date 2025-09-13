@@ -1,9 +1,11 @@
-{ config, lib, inputs, ... }:
-
-let
-  cfg = config.features.editors.nvf;
-in
 {
+  config,
+  lib,
+  inputs,
+  ...
+}: let
+  cfg = config.features.editors.nvf;
+in {
   options.features.editors.nvf = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -18,6 +20,10 @@ in
 
       settings = {
         vim = {
+          options = {
+            tabstop = 2;
+            shiftwidth = 2;
+          };
           theme = {
             enable = true;
             name = "everforest";
@@ -68,20 +74,20 @@ in
           binds = {
             whichKey.enable = true;
           };
-          
+
           telescope.enable = true;
           filetree.nvimTree = {
             enable = true;
             setupOpts = {
               view = {
-                 width = 30; 
-                 side = "left";
+                width = 30;
+                side = "left";
               };
               actions = {
                 open_file.resize_window = true;
               };
-      };
-	  };
+            };
+          };
           viAlias = true;
           vimAlias = true;
 
