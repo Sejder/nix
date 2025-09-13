@@ -21,7 +21,7 @@ in {
         audio.enable = false;
         boot.autoBoot.enable = true;
       };
-      desktopenv.hyprland.enable = false;
+      #desktopenv.hyprland.enable = false;
     };
 
     services.getty = {
