@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.features.server;
@@ -28,5 +29,11 @@ in {
       autologinOnce = true;
       autologinUser = "mikke";
     };
+
+    boot.kernelModules = [ "bcache" ];
+
+    environment.systemPackages = with pkgs; [
+      bcache-tools
+    ];
   };
 }
