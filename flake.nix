@@ -51,6 +51,8 @@
               sharedModules = [
                 nvf.homeManagerModules.default
               ];
+              backupFileExtension = "backup";
+
             };
           })
         ];
@@ -59,6 +61,7 @@
     nixosConfigurations = {
       ideapad = mkHost "ideapad";
       home = mkHost "home";
+      slimbook = mkHost "slimbook";
     };
     homeConfigurations.mikke = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};

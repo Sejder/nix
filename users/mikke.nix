@@ -22,11 +22,14 @@
     username = "mikke";
     homeDirectory = "/home/${config.home.username}";
     stateVersion = "25.05";
-
     packages = with pkgs; [ 
       obs-studio
     ];
   };
 
-  programs.home-manager.enable = true;
+  programs.home-manager = {
+    enable = true;
+
+  };
+
 }

@@ -1,13 +1,11 @@
+{ config, pkgs, inputs, ... }:
+
 {
-  config,
-  pkgs,
-  inputs,
-  ...
-}: {
-  imports = [
-    ./hardware-configuration.nix
-    ../../modules/nixos
-  ];
+  imports =
+    [
+      ./hardware-configuration.nix
+      ../../modules/nixos
+    ];
 
   networking.hostName = "home";
 
@@ -17,6 +15,7 @@
     nix-ld.enable = true;
     server.enable = true;
   };
+
   nixpkgs.overlays = [
     (_: prev: {
       tailscale = prev.tailscale.overrideAttrs (old: {
@@ -33,14 +32,13 @@
     (final: prev: {
       # Pull prettier from unstable for nvf
       prettier = inputs.unstable-nixpkgs.legacyPackages.${prev.system}.nodePackages.prettier;
-
-      nodePackages =
-        prev.nodePackages
-        // {
-          prettier = inputs.unstable-nixpkgs.legacyPackages.${prev.system}.nodePackages.prettier;
-        };
+      
+      nodePackages = prev.nodePackages // {
+        prettier = inputs.unstable-nixpkgs.legacyPackages.${prev.system}.nodePackages.prettier;
+      };
     })
   ];
 
   system.stateVersion = "25.05";
+
 }
