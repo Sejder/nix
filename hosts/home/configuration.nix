@@ -15,7 +15,10 @@
 
   features = {
     nix-ld.enable = true;
-    server.enable = true;
+    server = {
+      enable = true;
+      llm.ollama.enable = true;
+    };
   };
   nixpkgs.overlays = [
     (_: prev: {
