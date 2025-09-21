@@ -4,7 +4,7 @@ with lib;
 
 let
   ytdownload = pkgs.writeScriptBin "ytdownload" ''
-    #!${pkgs.zsh}/bin/zsh
+    #!/${pkgs.zsh}/bin/zsh
     set -e
     
     # Check if URL argument is provided
@@ -14,13 +14,22 @@ let
       exit 1
     fi
     
-    # Use uv to run yt-dlp with the provided arguments
-    exec ${pkgs.uv}/bin/uvx --refresh yt-dlp "$@"
+    # Create temporary Videos directory in current working directory
+    mkdir -p ./Videos
+    
+    # Download video to ./Videos
+    ${pkgs.uv}/bin/uvx --refresh yt-dlp -o "./Videos/%(title)s.%(ext)s" "$@"
+    
+    # Move downloaded files to Nextcloud via rclone
+    rclone move ./Videos/ cloud:/Videos/ --verbose
+    
+    # Clean up - remove the temporary Videos directory
+    rm -rf ./Videos
   '';
 in
 {
   options.features.scripts.ytdownloader = {
-    enable = mkEnableOption "Enable ytdownload script for downloading YouTube videos with yt-dlp via uv";
+    enable = mkEnableOption "Enable ytdownload script for downloading YouTube videos with yt-dlp via uv and moving to Nextcloud via rclone";
   };
 
   config = mkIf config.features.scripts.ytdownloader.enable {
@@ -28,6 +37,7 @@ in
       ytdownload
       uv
       ffmpeg_6-full
+      rclone
     ];
   };
 }

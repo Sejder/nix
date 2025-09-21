@@ -1,9 +1,11 @@
-{ config, pkgs, lib, ... }:
-
-let
-  cfg = config.features.server.nginx;
-in
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+  cfg = config.features.server.nginx;
+in {
   options.features.server.nginx.enable = lib.mkOption {
     type = lib.types.bool;
     default = false;
@@ -13,18 +15,11 @@ in
   config = lib.mkIf cfg.enable {
     services.nginx = {
       enable = true;
-
-      virtualHosts."${config.networking.hostName}" = {
-        locations = {
-            "/" = {
-              proxyPass = "http://127.0.0.1:5000";
-            };
-          };
-      };
+      clientMaxBodySize = "1G";
     };
-
     environment.systemPackages = with pkgs; [
       nginx
     ];
   };
 }
+

@@ -22,7 +22,6 @@ in {
         audio.enable = false;
         boot.autoBoot.enable = true;
       };
-      #desktopenv.hyprland.enable = false;
     };
 
     services.getty = {
@@ -30,10 +29,5 @@ in {
       autologinUser = "mikke";
     };
 
-    boot.kernelModules = [ "bcache" ];
-
-    environment.systemPackages = with pkgs; [
-      bcache-tools
-    ];
   };
 }

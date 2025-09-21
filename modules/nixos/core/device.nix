@@ -1,8 +1,10 @@
-{ pkgs, lib, config, ... }:
-let
-  cfg = config.device;
-in
 {
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.device;
+in {
   options.device = lib.mkOption {
     type = lib.types.str;
     default = "";
