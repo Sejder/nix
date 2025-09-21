@@ -28,5 +28,7 @@ in
       vlc
       mattermost-desktop
     ];
+
+    features.scripts.obsidian-startup.enable = true;
   };
 }

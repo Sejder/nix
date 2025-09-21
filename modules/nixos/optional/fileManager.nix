@@ -21,6 +21,7 @@ in
 
         gst_all_1.gst-plugins-good
         gst_all_1.gst-plugins-bad
+        zip
       ];
 
       environment.pathsToLink = [ "share/thumbnailers" ];

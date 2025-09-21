@@ -12,7 +12,7 @@
           "$mainMod, F, exec, $filemanager"
           "$mainMod, space, exec, rofi -show combi"
           "$mainMod, C, exec, code"
-          "$mainMod, O, exec, obsidian"
+          "$mainMod, O, exec, obsidian-startup"
           "$mainMod, S, exec, spotify"
           "$mainMod, D, exec, discord"
           "$mainMod, I, exec, idea-community"

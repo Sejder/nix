@@ -21,7 +21,8 @@
 
       # Monitor Configuration
       monitor = [
-        ",preferred,auto,auto"
+        "eDP-1,preferred,2880x1000,auto"
+        "DP-1,preferred,0x0,auto"
       ];
 
       # General
@@ -48,6 +49,8 @@
       misc = {
         force_default_wallpaper = 0;
         disable_hyprland_logo = true;
+        mouse_move_enables_dpms = true;
+        mouse_move_focuses_monitor = true;
       };
 
       input = {

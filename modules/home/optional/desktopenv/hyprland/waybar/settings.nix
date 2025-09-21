@@ -87,8 +87,8 @@ lib.mkIf config.features.desktopenv.hyprland.waybar.enable {
             "format" = "{icon}";
             "format-charging" = "󰂄";
             "format-plugged" = "󰂄";
-            "format-alt" = " {time} {icon}";
-            "tooltip-format" = "{capacity}% Empty in {time}";
+            "format-alt" = " {timeTo} {icon}";
+            "tooltip-format" = "{capacity}% {timeTo}";
             "format-icons" = [
                 "󰂎"  # 0–10%
                 "󰁺"  # 11–20%

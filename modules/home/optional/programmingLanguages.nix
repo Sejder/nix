@@ -36,6 +36,12 @@ in {
       default = cfg.enable;
       description = "Enable rust";
     };
+
+    R.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = cfg.enable;
+      description = "Enable R";
+    };
   };
 
   config = lib.mkMerge [
@@ -72,6 +78,14 @@ in {
         clippy
       ];
       programs.nvf.settings.vim.languages.rust.enable = true;
+    })
+
+    (lib.mkIf cfg.R.enable {
+      home.packages = with pkgs; [
+        R
+        rstudio
+      ];
+      programs.nvf.settings.vim.languages.r.enable = true;
     })
   ];
 }
