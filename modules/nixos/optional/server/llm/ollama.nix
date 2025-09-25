@@ -16,7 +16,7 @@ in {
   config = lib.mkIf cfg.enable {
     services.ollama = {
       enable = true;
-      loadModels = ["llama3.2"];
+      loadModels = ["llama3.3"];
     };
     services.open-webui = {
       enable = true;
