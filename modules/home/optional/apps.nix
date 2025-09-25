@@ -30,5 +30,6 @@ in
     ];
 
     features.scripts.obsidian-startup.enable = true;
+    features.latex.enable = true;
   };
 }
