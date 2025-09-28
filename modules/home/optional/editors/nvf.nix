@@ -21,8 +21,18 @@ in {
       settings = {
         vim = {
           options = {
-            tabstop = 2;
-            shiftwidth = 2;
+            tabstop = 4;
+            shiftwidth = 4;
+          };
+          dashboard = {
+            alpha.enable = true;
+          };
+          clipboard = {
+            enable = true;
+            registers = "unnamedplus";
+            providers = {
+              wl-copy.enable = true;
+            };
           };
           theme = {
             enable = true;

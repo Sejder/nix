@@ -19,7 +19,6 @@ in
     
     home.packages = with pkgs; [
       vscode
-      jetbrains.idea-community
       obsidian
       spotify
       discord
@@ -27,6 +26,7 @@ in
       nextcloud-client
       vlc
       mattermost-desktop
+      
     ];
 
     features.scripts.obsidian-startup.enable = true;

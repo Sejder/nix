@@ -15,7 +15,7 @@
           "$mainMod, O, exec, obsidian-startup"
           "$mainMod, S, exec, spotify"
           "$mainMod, D, exec, discord"
-          "$mainMod, I, exec, idea-community"
+          "$mainMod, N, exec, kitty nvim"
 
           # Windows
           "$mainMod, Q, killactive"

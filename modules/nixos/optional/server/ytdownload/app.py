@@ -20,7 +20,7 @@ current_process = None
 output_queue = queue.Queue()
 process_complete = False
 
-HTML_TEMPLATE = '''
+HTML_TEMPLATE = """
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,6 +53,7 @@ HTML_TEMPLATE = '''
             </div>
             <button type="submit" id="downloadBtn">Download</button>
             <button type="button" id="clearBtn" class="clear-btn" onclick="clearOutput()">Clear</button>
+            <button type="button" id="updateBtn" onclick="updateYtdlp()">Update yt-dlp</button>
         </form>
         
         <div id="loading" class="loading">
@@ -148,109 +149,120 @@ HTML_TEMPLATE = '''
     </script>
 </body>
 </html>
-'''
+"""
 
-@app.route('/')
+
+@app.route("/")
 def index():
     return render_template_string(HTML_TEMPLATE)
 
-@app.route('/download', methods=['POST'])
+
+@app.route("/download", methods=["POST"])
 def download():
     global current_process, output_queue, process_complete
-    
+
     data = request.json
-    url = data.get('url', '').strip()
-    
+    url = data.get("url", "").strip()
+
     if not url:
-        return 'URL is required', 400
-    
+        return "URL is required", 400
+
     # Clear previous output
     while not output_queue.empty():
         try:
             output_queue.get_nowait()
         except queue.Empty:
             break
-    
+
     process_complete = False
-    
+
     def run_ytdownload():
         global current_process, process_complete
         try:
             # Ensure Videos directory exists
-            videos_dir = '/var/lib/ytdownload/Videos'
+            videos_dir = "/var/lib/ytdownload/Videos"
             os.makedirs(videos_dir, exist_ok=True)
-            
+
             # Change to the working directory
-            os.chdir('/var/lib/ytdownload')
-            
+            os.chdir("/var/lib/ytdownload")
+
             # Run ytdownload command
-            output_queue.put('🚀 Starting download...\n')
+            output_queue.put("🚀 Starting download...\n")
             current_process = subprocess.Popen(
-                ['ytdownload', url],
+                ["ytdownload", url],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
                 universal_newlines=True,
                 bufsize=1,
-                cwd='/var/lib/ytdownload'
+                cwd="/var/lib/ytdownload",
             )
-            
+
             # Stream output
-            for line in iter(current_process.stdout.readline, ''):
+            for line in iter(current_process.stdout.readline, ""):
                 output_queue.put(line)
-            
+
             current_process.wait()
             download_return_code = current_process.returncode
-            
+
             if download_return_code == 0:
-                output_queue.put('\n✅ Download completed successfully!\n')
-                
+                output_queue.put("\n✅ Download completed successfully!\n")
+
                 # Check if Videos directory has any files
                 if os.path.exists(videos_dir) and os.listdir(videos_dir):
-                    output_queue.put('📤 Starting upload to cloud storage...\n')
-                    
+                    output_queue.put("📤 Starting upload to cloud storage...\n")
+
                     # Run rclone move command
                     current_process = subprocess.Popen(
-                        ['rclone', 'move', 'Videos', 'cloud:/Videos', '-v'],
+                        ["rclone", "move", "Videos", "cloud:/Videos", "-v"],
                         stdout=subprocess.PIPE,
                         stderr=subprocess.STDOUT,
                         universal_newlines=True,
                         bufsize=1,
-                        cwd='/var/lib/ytdownload'
+                        cwd="/var/lib/ytdownload",
                     )
-                    
+
                     # Stream rclone output
-                    for line in iter(current_process.stdout.readline, ''):
+                    for line in iter(current_process.stdout.readline, ""):
                         output_queue.put(line)
-                    
+
                     current_process.wait()
                     rclone_return_code = current_process.returncode
-                    
+
                     if rclone_return_code == 0:
-                        output_queue.put('\n🎉 Upload completed successfully! Files moved to cloud:/Videos\n')
+                        output_queue.put(
+                            "\n🎉 Upload completed successfully! Files moved to cloud:/Videos\n"
+                        )
                     else:
-                        output_queue.put(f'\n❌ Upload failed with exit code {rclone_return_code}\n')
+                        output_queue.put(
+                            f"\n❌ Upload failed with exit code {rclone_return_code}\n"
+                        )
                 else:
-                    output_queue.put('\n⚠️  No files found in Videos directory to upload\n')
+                    output_queue.put(
+                        "\n⚠️  No files found in Videos directory to upload\n"
+                    )
             else:
-                output_queue.put(f'\n❌ Download failed with exit code {download_return_code}\n')
-                
+                output_queue.put(
+                    f"\n❌ Download failed with exit code {download_return_code}\n"
+                )
+
         except Exception as e:
-            output_queue.put(f'\n❌ Error: {str(e)}\n')
+            output_queue.put(f"\n❌ Error: {str(e)}\n")
         finally:
             process_complete = True
             current_process = None
-    
+
     # Start download in background thread
     thread = threading.Thread(target=run_ytdownload)
     thread.daemon = True
     thread.start()
-    
-    return jsonify({'status': 'started'})
 
-@app.route('/output')
+    return jsonify({"status": "started"})
+
+
+@app.route("/output")
 def get_output():
     global process_complete
-    
+
     output_lines = []
     while not output_queue.empty():
         try:
@@ -258,11 +270,10 @@ def get_output():
             output_lines.append(line)
         except queue.Empty:
             break
-    
-    return jsonify({
-        'output': ''.join(output_lines),
-        'complete': process_complete
-    })
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8001)
+    return jsonify({"output": "".join(output_lines), "complete": process_complete})
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8001)
+
