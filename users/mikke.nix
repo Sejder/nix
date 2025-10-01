@@ -9,6 +9,7 @@
     editors = {
       vscode.enable = true;
       nvf.enable = true;
+      cursor-cli.enable = true;
     };
 
     browsers.firefox.enable = true;

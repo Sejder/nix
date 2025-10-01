@@ -12,6 +12,7 @@
   features = {
     server.enable = false;
     nix-ld.enable = true;
+    virtualisation.docker.enable = true;
   };
 
   nixpkgs.overlays = [

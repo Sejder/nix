@@ -36,7 +36,6 @@
         specialArgs = {inherit inputs lib;};
         modules = [
           ./hosts/${hostName}/configuration.nix
-          #nvf.nixosModules.default
           home-manager.nixosModules.home-manager
           ({config, ...}: {
             home-manager = {

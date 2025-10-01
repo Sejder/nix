@@ -1,13 +1,14 @@
-{ config, lib, hostName, ... }:
-
-let
-  cfg = config.allowUnfree;
-in
 {
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.allowUnfree;
+in {
   options.allowUnfree = {
     enable = lib.mkOption {
       type = lib.types.bool;
-      default = hostName == "wsl";
+      default = true;
       description = "Allow unfree packages";
     };
   };
