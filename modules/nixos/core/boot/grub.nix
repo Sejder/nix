@@ -1,6 +1,7 @@
 { config, lib, ... }:
 let
   cfg = config.features.settings.boot;
+  deviceCfg = config.device;
 in
 
 {
@@ -45,7 +46,7 @@ in
           '';
           default = "0";
           splashImage = null;
-          theme = ../../../../assets/grubThemes/Particle-window/2k;
+          theme = ../../../../assets/grubThemes/Particle-window/${deviceCfg.resolution};
         };
       };
     }; 

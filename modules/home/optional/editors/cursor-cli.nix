@@ -5,7 +5,7 @@ let
 
   unstable = import (builtins.fetchTarball {
     url = "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
-    sha256 = "sha256-0m27AKv6ka+q270dw48KflE0LwQYrO7Fm4/2//KCVWg=";
+    sha256 = "sha256:02w5j06nl2gddh9ifz1647b8bilhzkqg9c93f14cl4k0kq9c8fl1";
   }) { inherit (pkgs) system; config = { allowUnfree = true; }; };
 in
 {

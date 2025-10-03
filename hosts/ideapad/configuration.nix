@@ -7,7 +7,10 @@
     ];
 
   networking.hostName = "ideapad";
-  device = "laptop";
+  device = {
+    type = "laptop";
+    resolution = "1080p";
+  };
 
   features = {
     server.enable = false;

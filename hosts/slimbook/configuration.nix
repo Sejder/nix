@@ -9,7 +9,10 @@
 
   networking.hostName = "home";
 
-  device = "server";
+  device = {
+    type = "server";
+    resolution = "2k";
+  };
 
   features = {
     nix-ld.enable = true;

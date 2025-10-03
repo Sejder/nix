@@ -6,16 +6,29 @@
   cfg = config.device;
 in {
   options.device = lib.mkOption {
-    type = lib.types.str;
-    default = "";
-    description = "Select device type";
+    type = lib.types.submodule {
+      options = {
+        type = lib.mkOption {
+          type = lib.types.str;
+          default = "";
+          description = "Select device type";
+        };
+        resolution = lib.mkOption {
+          type = lib.types.enum [ "1080p" "2k" ];
+          default = "1080p";
+          description = "Select display resolution for GRUB theme";
+        };
+      };
+    };
+    default = { type = ""; resolution = "1080p"; };
+    description = "Device configuration";
   };
 
   config = {
     assertions = [
       {
-        assertion = cfg != "";
-        message = "Device type must be set at the host level (device = ...).";
+        assertion = cfg.type != "";
+        message = "Device type must be set at the host level (device.type = ...).";
       }
     ];
 
@@ -40,14 +53,14 @@ in {
         };
       })
       
-      (lib.mkIf (cfg == "desktop") {
+      (lib.mkIf (cfg.type == "desktop") {
         tlp.settings = {
           CPU_SCALING_GOVERNOR_ON_AC = "performance";
           CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
         };
       })
       
-      (lib.mkIf (cfg == "server") {
+      (lib.mkIf (cfg.type == "server") {
         tlp.settings = {
           CPU_SCALING_GOVERNOR_ON_AC = "performance";
         };

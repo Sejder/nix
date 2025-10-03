@@ -13,6 +13,12 @@ in {
       description = "Enable Programming Languages";
     };
 
+    nix.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = "Enable Nix";
+    };
+
     python.enable = lib.mkOption {
       type = lib.types.bool;
       default = cfg.enable;
@@ -45,11 +51,25 @@ in {
   };
 
   config = lib.mkMerge [
+    (lib.mkIf cfg.nix.enable {
+      home.packages = with pkgs; [
+        nixd
+        nixfmt-rfc-style
+
+        vscode-extensions.bbenoist.nix
+      ];
+      programs.nvf.settings.vim.languages.nix.enable = true;
+    })
+    
     (lib.mkIf cfg.python.enable {
       home.packages = with pkgs; [
         uv
         python312
-        black
+
+        vscode-extensions.ms-python.python
+        vscode-extensions.ms-python.pylint
+        vscode-extensions.ms-python.vscode-pylance
+        vscode-extensions.ms-pyright.pyright
       ];
       programs.nvf.settings.vim.languages.python.enable = true;
     })
@@ -58,6 +78,9 @@ in {
       home.packages = with pkgs; [
         openjdk
         gradle
+
+        vscode-extensions.redhat.java
+        vscode-extensions.vscjava.vscode-gradle
       ];
       programs.nvf.settings.vim.languages.java.enable = true;
     })
@@ -71,19 +94,45 @@ in {
 
     (lib.mkIf cfg.rust.enable {
       home.packages = with pkgs; [
-        rustc
-        cargo
-        rust-analyzer
-        rustfmt
-        clippy
+        #rustc
+        #cargo
+        #rust-analyzer
+        #rustfmt
+        #clippy
+        rustup
+
+        vscode-extensions.rust-lang.rust-analyzer
       ];
+      
       programs.nvf.settings.vim.languages.rust.enable = true;
     })
 
     (lib.mkIf cfg.R.enable {
-      home.packages = with pkgs; [
-        R
-        rstudio
+      home.packages = let
+        sharedRPackages = with pkgs.rPackages; [
+          rmarkdown
+          stringi
+          stringr
+          bslib
+          sass
+          ggplot2
+          dplyr
+          xts
+          languageserver
+          pandoc
+        ];
+      in [
+        (pkgs.rstudioWrapper.override {
+          packages = sharedRPackages;
+        })
+
+        (pkgs.rWrapper.override {
+          packages = sharedRPackages;
+        })
+
+        pkgs.R
+        pkgs.pandoc
+        pkgs.vscode-extensions.reditorsupport.r
       ];
       programs.nvf.settings.vim.languages.r.enable = true;
     })
