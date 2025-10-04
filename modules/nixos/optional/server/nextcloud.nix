@@ -26,6 +26,8 @@ in
         dbtype = "sqlite";
       };
 
+      datadir = "/data/nextcloud";
+
       settings = {
         trusted_domains = [
           "localhost"

@@ -17,6 +17,7 @@ in {
     services.ollama = {
       enable = true;
       loadModels = ["llama3.3"];
+      models = "/data/models";
     };
     services.open-webui = {
       enable = true;
