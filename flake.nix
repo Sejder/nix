@@ -67,9 +67,9 @@
       extraSpecialArgs = {hostName = "wsl";};
       # No extraSpecialArgs needed - modules import lib directly
       modules = [
-        ./users/mikke.nix
+        ./users/mikke-wsl.nix
         nvf.homeManagerModules.default
       ];
-    };
+    }; 
   };
 }
