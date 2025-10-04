@@ -9,7 +9,7 @@
   networking.hostName = "ideapad";
   device = {
     type = "laptop";
-    resolution = "1080p";
+    resolution = "2k";
   };
 
   features = {
@@ -18,17 +18,7 @@
     virtualisation.docker.enable = true;
   };
 
-  nixpkgs.overlays = [
-
-    (final: prev: {
-      # Pull prettier from unstable for nvf
-      prettier = inputs.unstable-nixpkgs.legacyPackages.${prev.system}.nodePackages.prettier;
-      
-      nodePackages = prev.nodePackages // {
-        prettier = inputs.unstable-nixpkgs.legacyPackages.${prev.system}.nodePackages.prettier;
-      };
-    })
-  ];
+ 
 
   system.stateVersion = "25.05";
 }

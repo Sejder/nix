@@ -39,7 +39,7 @@
           home-manager.nixosModules.home-manager
           ({config, ...}: {
             home-manager = {
-              useGlobalPkgs = true;
+              useGlobalPkgs = false;
               useUserPackages = true;
               users = {
                 mikke = import ./users/mikke.nix;
