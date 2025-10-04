@@ -19,7 +19,7 @@
     scripts.ytdownloader.enable = true;
   };
 
-  home = {
+home = {
     username = "mikke";
     homeDirectory = "/home/${config.home.username}";
     stateVersion = "25.05";
