@@ -110,7 +110,7 @@
         "flake-parts": "flake-parts",
         "mnw": "mnw",
         "nixpkgs": [
-          "nixpkgs"
+          "unstable-nixpkgs"
         ],
         "systems": "systems"
       },

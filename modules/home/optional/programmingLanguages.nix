@@ -55,9 +55,12 @@ in {
       home.packages = with pkgs; [
         nixd
         nixfmt-rfc-style
-
-        vscode-extensions.bbenoist.nix
       ];
+      
+      features.editors.vscode.extensions = with pkgs.vscode-extensions; [
+        bbenoist.nix
+      ];
+      
       programs.nvf.settings.vim.languages.nix.enable = true;
     })
     
@@ -65,12 +68,15 @@ in {
       home.packages = with pkgs; [
         uv
         python312
-
-        vscode-extensions.ms-python.python
-        vscode-extensions.ms-python.pylint
-        vscode-extensions.ms-python.vscode-pylance
-        vscode-extensions.ms-pyright.pyright
       ];
+      
+      features.editors.vscode.extensions = with pkgs.vscode-extensions; [
+        ms-python.python
+        ms-python.pylint
+        ms-python.vscode-pylance
+        ms-pyright.pyright
+      ];
+      
       programs.nvf.settings.vim.languages.python.enable = true;
     })
 
@@ -78,10 +84,13 @@ in {
       home.packages = with pkgs; [
         openjdk
         gradle
-
-        vscode-extensions.redhat.java
-        vscode-extensions.vscjava.vscode-gradle
       ];
+      
+      features.editors.vscode.extensions = with pkgs.vscode-extensions; [
+        redhat.java
+        vscjava.vscode-gradle
+      ];
+      
       programs.nvf.settings.vim.languages.java.enable = true;
     })
 
@@ -100,8 +109,10 @@ in {
         #rustfmt
         #clippy
         rustup
-
-        vscode-extensions.rust-lang.rust-analyzer
+      ];
+      
+      features.editors.vscode.extensions = with pkgs.vscode-extensions; [
+        rust-lang.rust-analyzer
       ];
       
       programs.nvf.settings.vim.languages.rust.enable = true;
@@ -132,8 +143,12 @@ in {
 
         pkgs.R
         pkgs.pandoc
-        pkgs.vscode-extensions.reditorsupport.r
       ];
+      
+      features.editors.vscode.extensions = with pkgs.vscode-extensions; [
+        reditorsupport.r
+      ];
+      
       programs.nvf.settings.vim.languages.r.enable = true;
     })
   ];

@@ -11,7 +11,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nvf = {
       url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "unstable-nixpkgs";
     };
   };
   outputs = {
@@ -33,7 +33,7 @@
     mkHost = hostName:
       nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = {inherit inputs lib;};
+        specialArgs = {inherit inputs lib ;};
         modules = [
           ./hosts/${hostName}/configuration.nix
           home-manager.nixosModules.home-manager

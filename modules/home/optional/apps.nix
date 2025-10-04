@@ -30,6 +30,8 @@ in
     ];
 
     features.scripts.obsidian-startup.enable = true;
-    features.latex.enable = true;
+    features.documentWriters.latex.enable = true;
+    features.documentWriters.typst.enable = true;
+
   };
 }

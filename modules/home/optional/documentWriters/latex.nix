@@ -1,10 +1,10 @@
 {config, pkgs, lib, ... }:
 
 let
-  cfg = config.features.latex;
+  cfg = config.features.documentWriters.latex;
 in
 {
-  options.features.latex = {
+  options.features.documentWriters.latex = {
 
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -18,9 +18,11 @@ in
   config = lib.mkIf cfg.enable {
     
     home.packages = with pkgs; [
-      vscode
-      vscode-extensions.james-yu.latex-workshop
       texliveFull
+    ];
+
+    features.editors.vscode.extensions = with pkgs.vscode-extensions; [
+      james-yu.latex-workshop
     ];
   };
 }

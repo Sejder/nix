@@ -11,5 +11,14 @@ in
     home.packages = with pkgs; [
       vscode
     ];
+    
+    programs.vscode = {
+      enable = true;
+      
+      profiles.mikke.extensions = with pkgs.vscode-extensions; [
+        robbowen.synthwave-vscode
+      ];
+      
+    };
   };
 }
