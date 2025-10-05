@@ -17,7 +17,9 @@ in {
     services.ollama = {
       enable = true;
       loadModels = ["llama3.3"];
-      models = "/data/models";
+      models = "/data/ollama/models";
+      user = "ollama";
+      group = "ollama";
     };
     services.open-webui = {
       enable = true;
