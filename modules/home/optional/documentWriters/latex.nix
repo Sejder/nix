@@ -21,7 +21,7 @@ in
       texliveFull
     ];
 
-    features.editors.vscode.extensions = with pkgs.vscode-extensions; [
+    programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
       james-yu.latex-workshop
     ];
   };

@@ -21,9 +21,17 @@ in
       typst
     ];
 
-    features.editors.vscode.extensions = with pkgs.vscode-extensions; [
-      myriad-dreamin.tinymist
-    ];
+
+    programs.vscode.profiles.default = {
+      extensions = with pkgs.vscode-extensions; [
+        myriad-dreamin.tinymist
+      ];
+
+      userSettings = {
+        tinymist.exportPdf = "onType";
+      };
+    };
+
 
   };
 }

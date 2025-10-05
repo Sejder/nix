@@ -57,7 +57,7 @@ in {
         nixfmt-rfc-style
       ];
       
-      features.editors.vscode.extensions = with pkgs.vscode-extensions; [
+      programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
         bbenoist.nix
       ];
       
@@ -70,7 +70,7 @@ in {
         python312
       ];
       
-      features.editors.vscode.extensions = with pkgs.vscode-extensions; [
+      programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
         ms-python.python
         ms-python.pylint
         ms-python.vscode-pylance
@@ -86,9 +86,8 @@ in {
         gradle
       ];
       
-      features.editors.vscode.extensions = with pkgs.vscode-extensions; [
-        redhat.java
-        vscjava.vscode-gradle
+      programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
+        vscjava.vscode-java-pack
       ];
       
       programs.nvf.settings.vim.languages.java.enable = true;
@@ -111,7 +110,7 @@ in {
         rustup
       ];
       
-      features.editors.vscode.extensions = with pkgs.vscode-extensions; [
+      programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
         rust-lang.rust-analyzer
       ];
       
@@ -145,7 +144,7 @@ in {
         pkgs.pandoc
       ];
       
-      features.editors.vscode.extensions = with pkgs.vscode-extensions; [
+      programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
         reditorsupport.r
       ];
       
