@@ -15,7 +15,7 @@ in
   config = lib.mkIf cfg.enable {
       programs.rofi = {
         enable = true;
-        package = pkgs.rofi-wayland;  
+        package = pkgs.rofi;  
         theme = "nix/assets/rofiThemes/nord/nord.rasi";  
 
         # Extra Rofi settings

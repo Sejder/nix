@@ -118,6 +118,30 @@ in {
     })
 
     (lib.mkIf cfg.R.enable {
+
+      # For RStudio packages SOCI
+      nixpkgs.overlays = [
+        (final: prev: {
+          soci = prev.soci.overrideAttrs (old: {
+            version = "4.0.3";
+            src = prev.fetchFromGitHub {
+              owner = "SOCI";
+              repo = "soci";
+              rev = "v4.0.3";
+              sha256 = "sha256-HsQyHhW8EP7rK/Pdi1TSXee9yKJsujoDE9QkVdU9WIk=";
+            };
+
+            patches = [];
+
+            cmakeFlags = (old.cmakeFlags or []) ++ [
+                "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+              ];
+          });
+
+        })
+      ];
+      
+
       home.packages = let
         sharedRPackages = with pkgs.rPackages; [
           rmarkdown
@@ -146,6 +170,7 @@ in {
       
       programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
         reditorsupport.r
+        #reditorsupport.r-syntax
       ];
       
       programs.nvf.settings.vim.languages.r.enable = true;
