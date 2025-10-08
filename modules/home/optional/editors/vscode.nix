@@ -61,6 +61,7 @@ in
         enableUpdateCheck = false;
 
         enableExtensionUpdateCheck = false;
+
       };
       
     };
