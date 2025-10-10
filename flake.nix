@@ -25,10 +25,8 @@
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
 
-    # Create custom lib that can be used independently
     customLib = import ./lib {lib = nixpkgs.lib;};
 
-    # Extended lib for NixOS (preserves all existing extensions)
     lib = nixpkgs.lib.extend (self: super: {custom = customLib;});
     mkHost = hostName:
       nixpkgs.lib.nixosSystem {
