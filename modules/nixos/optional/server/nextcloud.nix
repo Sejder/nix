@@ -19,7 +19,7 @@ in
       enable = true;
       configureRedis = true;
       hostName = "cloud.${config.networking.hostName}";
-      package = pkgs.nextcloud31;
+      package = pkgs.nextcloud32;
 
       config = {
         adminpassFile = "/etc/nextcloud-admin-pass";
