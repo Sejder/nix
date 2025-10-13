@@ -32,7 +32,7 @@ in
       ];
       services.rpcbind.enable = true;
 
-      fileSystems."/mnt/test" = {
+      fileSystems."/data" = {
         device = "192.168.87.165:/c/data";
         fsType = "nfs";
         options = [ "vers=3" ];
