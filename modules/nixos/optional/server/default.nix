@@ -17,6 +17,7 @@ in {
         nextcloud.enable = true;
         monitoring.enable = true;
         ssh.enable = true;
+        nas.netgear.enable = true;
       };
       settings = {
         audio.enable = false;

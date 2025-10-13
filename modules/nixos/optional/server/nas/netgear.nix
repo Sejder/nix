@@ -26,6 +26,17 @@ in
             '';
         };
       };
+
+      environment.systemPackages = with pkgs; [
+        nfs-utils
+      ];
+      services.rpcbind.enable = true;
+
+      fileSystems."/mnt/test" = {
+        device = "192.168.87.165:/c/data";
+        fsType = "nfs";
+        options = [ "vers=3" ];
+      };
     };
   };
 }
