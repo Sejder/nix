@@ -27,13 +27,17 @@ in {
           proxyPass = "http://192.168.87.165:80";
           proxyWebsockets = true;
           recommendedProxySettings = true;
-          #extraConfig = ''
-          #  proxy_ssl_verify off;
-          #  proxy_set_header Host $host;
-          #  proxy_set_header X-Real-IP $remote_addr;
-          #  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-          #  proxy_set_header X-Forwarded-Proto $scheme;
-          #'';
+          rejectSSL = true;
+          extraConfig = ''
+proxy_http_version 1.1;
+      proxy_set_header Host $host;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+
+      # Sometimes needed if the NAS hardcodes https:// in redirects
+      proxy_redirect https:// http://;
+          '';
         };
       };
     };
