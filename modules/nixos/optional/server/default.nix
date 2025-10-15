@@ -24,8 +24,9 @@ in {
         boot.autoBoot.enable = true;
       };
 
-      scripts.cloudBackup.enable = true;
     };
+
+    home-manager.users.mikke.features.scripts.cloudBackup.enable = true;
 
     services.getty = {
       autologinOnce = true;
