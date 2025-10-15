@@ -23,6 +23,8 @@ in {
         audio.enable = false;
         boot.autoBoot.enable = true;
       };
+
+      scripts.cloudBackup.enable = true;
     };
 
     services.getty = {
