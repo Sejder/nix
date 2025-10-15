@@ -29,7 +29,7 @@ in {
           recommendedProxySettings = true;
         };
         locations."/admin" = {
-          proxyPass = "http://192.168.87.165:443";
+          proxyPass = "http://192.168.87.165:80";
           proxyWebsockets = true;
           recommendedProxySettings = true;
         };
