@@ -21,8 +21,9 @@
 
       # Monitor Configuration
       monitor = [
-        "eDP-1,preferred,2880x1000,auto"
-        "DP-1,preferred,0x0,auto"
+        "eDP-1,preferred,auto,auto"
+        "DP-1,preferred,auto-left,auto"
+        "DP-2,preferred,auto-center-up,auto"
       ];
 
       # General
