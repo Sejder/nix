@@ -41,15 +41,19 @@ in {
             };
           };
       "chatbot.${config.networking.hostName}" = {
-        locations."/" = {          
-          proxyPass = "http://0.0.0.0:${toString config.services.ollama.port}";
+        locations."/api/" = {
+          proxyPass = "http://127.0.0.1:11434";
           proxyWebsockets = true;
           recommendedProxySettings = true;
+
           extraConfig = ''
             proxy_buffering off;
+            proxy_cache off;
             chunked_transfer_encoding on;
+            proxy_request_buffering off;
           '';
         };
+
       };
     };
   };
