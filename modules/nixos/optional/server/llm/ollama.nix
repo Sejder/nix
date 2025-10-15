@@ -45,6 +45,8 @@ in {
           proxyPass = "http://127.0.0.1:${toString config.services.ollama.port}";
           proxyWebsockets = true;
           recommendedProxySettings = true;
+          proxyBuffering = false;
+          chunked_transfer_encoding = on;
         };
       };
     };
