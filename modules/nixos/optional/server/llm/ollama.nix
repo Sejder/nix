@@ -42,7 +42,7 @@ in {
           };
       "chatbot.${config.networking.hostName}" = {
         locations."/" = {          
-          proxyPass = "http://127.0.0.1:${toString config.services.ollama.port}";
+          proxyPass = "http://0.0.0.0:${toString config.services.ollama.port}";
           proxyWebsockets = true;
           recommendedProxySettings = true;
           extraConfig = ''
