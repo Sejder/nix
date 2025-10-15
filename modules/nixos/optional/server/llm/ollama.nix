@@ -17,7 +17,6 @@ in {
     services.ollama = {
       enable = true;
       loadModels = ["llama3.3"];
-      models = "/data/ollama/models";
       user = "ollama";
       group = "ollama";
     };
