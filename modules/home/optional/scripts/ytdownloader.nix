@@ -21,7 +21,7 @@ let
     ${pkgs.uv}/bin/uvx --refresh yt-dlp -o "./Videos/%(title)s.%(ext)s" "$@"
     
     # Move downloaded files to Nextcloud via rclone
-    rclone move ./Videos/ cloud:/Videos/ --verbose
+    rclone move ./Videos/ cloud:/netgear/Videos/ --verbose
     
     # Clean up - remove the temporary Videos directory
     rm -rf ./Videos
