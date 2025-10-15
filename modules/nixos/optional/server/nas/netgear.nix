@@ -28,6 +28,11 @@ in {
           proxyWebsockets = true;
           recommendedProxySettings = true;
         };
+        locations."/admin" = {
+          proxyPass = "http://192.168.87.165:443";
+          proxyWebsockets = true;
+          recommendedProxySettings = true;
+        };
       };
     };
     environment.systemPackages = with pkgs; [
