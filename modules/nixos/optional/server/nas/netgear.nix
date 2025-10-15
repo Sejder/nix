@@ -17,6 +17,12 @@ in {
   config = lib.mkIf cfg.enable {
     services.nginx.virtualHosts = {
       "netgear.${config.networking.hostName}" = {
+        listen = [
+              {
+                addr = "0.0.0.0";
+                port = 80;
+              }
+            ];
         locations."/" = {
           proxyPass = "http://192.168.87.165:80";
           proxyWebsockets = true;
