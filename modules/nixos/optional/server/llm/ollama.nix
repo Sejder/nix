@@ -16,7 +16,7 @@ in {
   config = lib.mkIf cfg.enable {
     services.ollama = {
       enable = true;
-      loadModels = ["llama3.3"];
+      loadModels = ["llama3.2" "deepseek-r1" "mistral" "qwen3" ];
       user = "ollama";
       group = "ollama";
     };
