@@ -46,7 +46,7 @@ in {
           proxyWebsockets = true;
           recommendedProxySettings = true;
           proxyBuffering = false;
-          chunked_transfer_encoding = on;
+          chunked_transfer_encoding = "on";
         };
       };
     };
