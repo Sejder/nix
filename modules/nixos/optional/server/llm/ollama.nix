@@ -43,8 +43,6 @@ in {
       "chatbot.${config.networking.hostName}" = {
         locations."/" = {
           proxyPass = "http://127.0.0.1:11434";
-          #proxyWebsockets = true;
-          #"recommendedProxySettings = true;
 
           extraConfig = ''
             proxy_buffering off;
