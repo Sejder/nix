@@ -19,6 +19,7 @@ in {
       loadModels = ["llama3.2" "deepseek-r1" "mistral" "qwen3" ];
       user = "ollama";
       group = "ollama";
+      port = 11434;
     };
     services.open-webui = {
       enable = true;
@@ -40,13 +41,6 @@ in {
             };
           };
       "chatbot.${config.networking.hostName}" = {
-        listen = [
-              {
-                addr = "0.0.0.0";
-                port = 80;
-              }
-            ];
-            
         locations."/" = {          
           proxyPass = "http://127.0.0.1:${toString config.services.ollama.port}";
           proxyWebsockets = true;
