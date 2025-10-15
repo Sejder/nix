@@ -25,9 +25,6 @@ in {
       };
 
     };
-
-    home-manager.users.mikke.features.scripts.cloudBackup.enable = true;
-
     services.getty = {
       autologinOnce = true;
       autologinUser = "mikke";
