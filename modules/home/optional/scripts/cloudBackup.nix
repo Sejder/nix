@@ -18,7 +18,7 @@ in
   config = lib.mkIf cfg.enable {
     systemd.user.services.cloudBackup = {
       Unit = {
-        Description = "Backup Nextcloud folder to NextcloudBackup";
+        Description = "Backup Nextcloud folder to cloudBackup";
       };
       Service = {
         Type = "oneshot";
