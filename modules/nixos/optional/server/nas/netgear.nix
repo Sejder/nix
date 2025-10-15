@@ -23,9 +23,6 @@ in {
             port = 80;
             }
           ];
-        forceSSL = true;
-        sslCertificate = "/etc/ssl/netgear/netgear.crt";
-        sslCertificateKey = "/etc/ssl/netgear/netgear.key";
         locations."/" = {
           proxyPass = "http://192.168.87.165:80";
           proxyWebsockets = true;
