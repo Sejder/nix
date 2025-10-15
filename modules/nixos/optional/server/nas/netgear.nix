@@ -18,18 +18,18 @@ in {
     services.nginx.virtualHosts = {
       "netgear.${config.networking.hostName}" = {
         listen = [
-              {
-                addr = "0.0.0.0";
-                port = 80;
-              }
-            ];
+          {
+            addr = "0.0.0.0";
+            port = 80;
+            }
+          ];
+        forceSSL = true;
+        sslCertificate = "/etc/ssl/netgear/netgear.crt";
+        sslCertificateKey = "/etc/ssl/netgear/netgear.key";
         locations."/" = {
           proxyPass = "http://192.168.87.165:80";
           proxyWebsockets = true;
           recommendedProxySettings = true;
-          extraConfig = ''
-            proxy_redirect https:// http://;
-          '';
         };
       };
     };
