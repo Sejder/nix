@@ -1,28 +1,48 @@
-{ config, pkgs, ... }:
+{config, pkgs, lib, ... }:
 
+let
+  cfg = config.features.scripts.cloudBackup;
+in
 {
-  systemd.user.services.nextcloud-backup = {
-    Unit = {
-      Description = "Backup Nextcloud folder to NextcloudBackup";
+  options.features.scripts.cloudBackup = {
+
+    enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Enable cloudBackup";
     };
-    Service = {
-      Type = "oneshot";
-      ExecStart = ''
-        ${pkgs.rsync}/bin/rsync -av --delete "$HOME/Nextcloud/" "$HOME/NextcloudBackup/"
-      '';
-    };
+
+
   };
 
-  systemd.user.timers.nextcloud-backup = {
-    Unit = {
-      Description = "Run Nextcloud backup once a day";
+  config = lib.mkIf cfg.enable {
+    systemd.user.services.nextcloud-backup = {
+      Unit = {
+        Description = "Backup Nextcloud folder to NextcloudBackup";
+      };
+      Service = {
+        Type = "oneshot";
+        ExecStart = ''
+          ${pkgs.rsync}/bin/rsync -av --delete "$HOME/Nextcloud/" "$HOME/NextcloudBackup/"
+        '';
+      };
     };
-    Timer = {
-      OnCalendar = "daily";
-      Persistent = true;
+
+    systemd.user.timers.nextcloud-backup = {
+      Unit = {
+        Description = "Run Nextcloud backup once a day";
+      };
+      Timer = {
+        OnCalendar = "daily";
+        Persistent = true;
+      };
+      Install = {
+        WantedBy = [ "timers.target" ];
+      };
     };
-    Install = {
-      WantedBy = [ "timers.target" ];
-    };
+
+    home.packages = with pkgs; [
+      rsync
+    ];
   };
 }
