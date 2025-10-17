@@ -1,7 +1,7 @@
 {
   description = "My modular NixOS + Home Manager configuration";
   inputs = {
-    
+
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
@@ -13,6 +13,14 @@
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-secrets = {
+      url = "git+ssh://git@github.com/mikkelsej/nix-secrets.git";
+      flake = false;
+    };
   };
   outputs = {
     self,
@@ -20,6 +28,8 @@
     home-manager,
     nixos-hardware,
     nvf,
+    agenix,
+    nix-secrets,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -31,9 +41,10 @@
     mkHost = hostName:
       nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = {inherit inputs lib ;};
+        specialArgs = {inherit inputs lib nix-secrets;};
         modules = [
           ./hosts/${hostName}/configuration.nix
+          agenix.nixosModules.default
           home-manager.nixosModules.home-manager
           ({config, ...}: {
             home-manager = {

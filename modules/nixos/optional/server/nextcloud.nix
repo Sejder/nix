@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  nix-secrets,
   ...
 }: let
   cfg = config.features.server.nextcloud;
@@ -15,7 +16,13 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    environment.etc."nextcloud-admin-pass".text = "PWD";
+    # Define encrypted secret
+    age.secrets.nextcloud-admin-pass = {
+      file = "${nix-secrets}/services/nextcloud-admin-pass.age";
+      owner = "nextcloud";
+      group = "nextcloud";
+      mode = "0440";
+    };
 
     services.nextcloud = {
       enable = true;
@@ -24,7 +31,7 @@ in {
       package = pkgs.nextcloud32;
 
       config = {
-        adminpassFile = "/etc/nextcloud-admin-pass";
+        adminpassFile = config.age.secrets.nextcloud-admin-pass.path;
         dbtype = "sqlite";
       };
       home = "/var/lib/nextcloud";
