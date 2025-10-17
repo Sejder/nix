@@ -74,10 +74,13 @@ in {
         ms-python.python
         ms-python.pylint
         ms-python.vscode-pylance
+        ms-python.black-formatter
       ];
 
       programs.vscode.profiles.default.userSettings = {
         "python.defaultInterpreterPath" = "/etc/profiles/per-user/mikke/bin/python";
+        "python.analysis.typeCheckingMode" = "standard";
+        "python.editor.defaultFormatter" = "ms-python.black-formatter";
       };
       
 

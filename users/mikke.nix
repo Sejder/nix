@@ -9,7 +9,10 @@
     editors = {
       vscode.enable = true;
       nvf.enable = true;
-      cursor-cli.enable = true;
+    };
+
+    chatbots = {
+      claude-code.enable = true;
     };
 
     browsers.firefox.enable = true;

@@ -37,6 +37,7 @@ in
             };
             autoIndentOnPaste = true;
           };
+          "explorer.confirmDragAndDrop" = false;
         };
 
         keybindings = [
