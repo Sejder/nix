@@ -142,14 +142,18 @@
     "nix-secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1760723987,
-        "narHash": "sha256-PlPvvBZFINLBLFX+fgklDG6uy59WrHZkLWUyU8DezhA=",
-        "path": "/home/mikke/nix-secrets",
-        "type": "path"
+        "lastModified": 1760722553,
+        "narHash": "sha256-klHpGYziVITADPq3Wcr3rMc4Y8OyxZ7v2H2mW4e983Y=",
+        "ref": "main",
+        "rev": "3d0aca206163ac2c653b1805f20f45ee70a4e916",
+        "revCount": 2,
+        "type": "git",
+        "url": "ssh://git@github.com/Mikkelsej/nix-secrets.git"
       },
       "original": {
-        "path": "/home/mikke/nix-secrets",
-        "type": "path"
+        "ref": "main",
+        "type": "git",
+        "url": "ssh://git@github.com/Mikkelsej/nix-secrets.git"
       }
     },
     "nixos-hardware": {

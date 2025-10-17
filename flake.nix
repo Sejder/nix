@@ -18,7 +18,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-secrets = {
-      url = "path:/home/mikke/nix-secrets";
+      url = "git+ssh://git@github.com/Mikkelsej/nix-secrets.git?ref=main";
       flake = false;
     };
   };

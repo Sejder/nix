@@ -32,7 +32,7 @@ in
       gcheck = "git checkout";
       gcredential = "git config credential.helper store";
 
-      switch-flake="sudo nixos-rebuild switch --flake 'path:/home/mikke/nix/#${hostName}'";
+      switch-flake="nixos-rebuild switch --flake 'path:/home/mikke/nix/#${hostName}' --sudo";
 
       home-switch = "home-manager switch --flake 'path:/home/mikke/nix#${config.home.username}'";
       update-flake = "nix flake update --flake 'path:/home/mikke/nix' && switch-flake";
