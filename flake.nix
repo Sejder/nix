@@ -18,7 +18,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-secrets = {
-      url = "git+ssh://git@github.com/mikkelsej/nix-secrets.git";
+      url = "path:/home/mikke/nix-secrets";
       flake = false;
     };
   };
@@ -60,7 +60,6 @@
                 nvf.homeManagerModules.default
               ];
               backupFileExtension = "backup";
-
             };
           })
         ];
@@ -74,11 +73,10 @@
     homeConfigurations.mikke = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
       extraSpecialArgs = {hostName = "wsl";};
-      # No extraSpecialArgs needed - modules import lib directly
       modules = [
         ./users/mikke-wsl.nix
         nvf.homeManagerModules.default
       ];
-    }; 
+    };
   };
 }
