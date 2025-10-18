@@ -20,7 +20,11 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       claude-code
+      nodejs-slim # Required for claude-code
     ];
 
+    programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
+        anthropic.claude-code
+      ];
   };
 }
