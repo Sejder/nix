@@ -7,6 +7,12 @@
     ];
 
   networking.hostName = "ideapad";
+
+  systemUsers = {
+    users = ["mikke"];
+    primaryUser = "mikke";
+  };
+
   device = {
     type = "laptop";
     resolution = "2k";
@@ -18,7 +24,7 @@
     virtualisation.docker.enable = true;
   };
 
-  
-  
+
+
   system.stateVersion = "25.05";
 }

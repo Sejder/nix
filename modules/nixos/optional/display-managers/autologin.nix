@@ -14,7 +14,7 @@ in
   config = lib.mkIf cfg.enable {
     services.displayManager.autoLogin = {
       enable = true;
-      user = "mikke";
+      user = config.systemUsers.primaryUser;
     };
   };
 }

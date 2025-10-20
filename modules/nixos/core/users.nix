@@ -1,9 +1,9 @@
-{ ... }:
+{ config, lib, ... }:
 
 {
-  users.users.mikke = {
+  users.users = lib.genAttrs config.systemUsers.users (username: {
     isNormalUser = true;
-    description = "mikke";
+    description = username;
     extraGroups = [ "networkmanager" "wheel" ];
-  };
+  });
 }

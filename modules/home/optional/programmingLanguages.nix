@@ -78,7 +78,7 @@ in {
       ];
 
       programs.vscode.profiles.default.userSettings = {
-        "python.defaultInterpreterPath" = "/etc/profiles/per-user/mikke/bin/python";
+        "python.defaultInterpreterPath" = "/etc/profiles/per-user/${config.home.username}/bin/python";
         "python.analysis.typeCheckingMode" = "standard";
         "python.editor.defaultFormatter" = "ms-python.black-formatter";
       };

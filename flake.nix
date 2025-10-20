@@ -50,9 +50,9 @@
             home-manager = {
               useGlobalPkgs = false;
               useUserPackages = true;
-              users = {
-                mikke = import ./users/mikke.nix;
-              };
+              users = lib.genAttrs config.systemUsers.users (username:
+                import ./users/${username}.nix
+              );
               extraSpecialArgs = {
                 hostName = config.networking.hostName;
               };

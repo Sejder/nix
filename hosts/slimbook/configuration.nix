@@ -7,16 +7,20 @@
       ../../modules/nixos
     ];
 
-  networking.hostName = "home";
+  networking.hostName = "slimbook";
+
+  systemUsers = {
+    users = ["mikke"];
+    primaryUser = "mikke";
+  };
 
   device = {
-    type = "server";
+    type = "laptop";
     resolution = "1080p";
   };
 
   features = {
     nix-ld.enable = true;
-    server.enable = true;
   };
 
   system.stateVersion = "25.05";

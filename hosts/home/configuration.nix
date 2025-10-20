@@ -11,6 +11,11 @@
 
   networking.hostName = "home";
 
+  systemUsers = {
+    users = ["mikke"];
+    primaryUser = "mikke";
+  };
+
   device = {
     type = "server";
     resolution = "1080p";

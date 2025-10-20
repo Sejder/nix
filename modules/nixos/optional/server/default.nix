@@ -27,7 +27,7 @@ in {
     };
     services.getty = {
       autologinOnce = true;
-      autologinUser = "mikke";
+      autologinUser = config.systemUsers.primaryUser;
     };
 
   };

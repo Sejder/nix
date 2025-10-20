@@ -16,10 +16,14 @@ in
 
     programs.git = {
       enable = true;
-      userName  = "Mikkelsej";
-      userEmail = "mikkel.sejdelin@gmail.com";
+      
+      
 
-      extraConfig = {
+      settings = {
+        user = {
+          name  = "Mikkelsej";
+          email = "mikkel.sejdelin@gmail.com";
+        };
         push = {
           autoSetupRemote = true;
         };

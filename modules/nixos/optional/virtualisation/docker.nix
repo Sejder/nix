@@ -16,7 +16,7 @@ in
     (lib.mkIf cfg.enable {
       virtualisation.docker.enable = true;
 
-      users.users.mikke.extraGroups = [ "docker" ];
+      users.users.${config.systemUsers.primaryUser}.extraGroups = [ "docker" ];
     })
   ];
 }

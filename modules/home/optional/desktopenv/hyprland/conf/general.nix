@@ -10,7 +10,7 @@
       "$filemanager" = "nautilus";
       "$menu" = "rofi -show combi";
       "$browser" = "firefox";
-      "$HOME" = "~/home/mikke";
+      "$HOME" = config.home.homeDirectory;
 
       # Environment
       env = [
