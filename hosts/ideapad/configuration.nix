@@ -18,6 +18,8 @@
     resolution = "2k";
   };
 
+  services.rstudio-server.enable = true;
+
   features = {
     server.enable = false;
     nix-ld.enable = true;

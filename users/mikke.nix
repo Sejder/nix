@@ -21,7 +21,10 @@
     programmingLanguages.enable = true;
     scripts = {
       ytdownloader.enable = true;
-      cloudBackup.enable = true;
+      cloudBackup = {
+        enable = true;
+        targetDir = "${config.home.homeDirectory}/cloudBackup";
+      };
     };
   };
 
