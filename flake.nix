@@ -55,6 +55,7 @@
               );
               extraSpecialArgs = {
                 hostName = config.networking.hostName;
+                deviceType = config.device.type;
               };
               sharedModules = [
                 nvf.homeManagerModules.default

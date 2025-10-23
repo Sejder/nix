@@ -12,7 +12,7 @@
     };
 
     chatbots = {
-      claude-code.enable = true;
+      github-copilot.enable = true;
     };
 
     browsers.firefox.enable = true;
