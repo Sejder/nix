@@ -19,11 +19,17 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      copilot-cli
+      github-copilot-cli
     ];
 
-    programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
+    programs.vscode.profiles.default = {
+      extensions = with pkgs.vscode-extensions; [
         github.copilot
       ];
+
+      userSettings = {
+          "chat.agent.enabled" = true;
+      };
+    };
   };
 }

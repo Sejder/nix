@@ -38,7 +38,6 @@ in
             autoIndentOnPaste = true;
           };
           "explorer.confirmDragAndDrop" = false;
-          "chat.agent.enabled" = false;
           "workbench.secondarySideBar.defaultVisibility" = "hidden";
           "workbench.startupEditor" = "none";
         };
