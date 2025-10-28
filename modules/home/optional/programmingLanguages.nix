@@ -48,6 +48,12 @@ in {
       default = cfg.enable;
       description = "Enable R";
     };
+
+    c-sharp.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = cfg.enable;
+      description = "Enable c#";
+    };
   };
 
   config = lib.mkMerge [
@@ -158,6 +164,13 @@ in {
       ];
       
       programs.nvf.settings.vim.languages.r.enable = true;
+    })
+
+    (lib.mkIf cfg.c-sharp.enable {
+      home.packages = with pkgs; [
+        jetbrains.rider
+        dotnetCorePackages.dotnet_9.sdk
+      ];
     })
   ];
 }

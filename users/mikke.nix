@@ -9,6 +9,7 @@
     editors = {
       vscode.enable = true;
       nvf.enable = true;
+      intellij.enable = true;
     };
 
     chatbots = {
@@ -16,7 +17,7 @@
     };
 
     browsers.firefox.enable = true;
-    desktopenv.hyprland.enable = true;
+    desktopenv.gnome.enable = true;
     apps.enable = true;
     programmingLanguages.enable = true;
     scripts = {
