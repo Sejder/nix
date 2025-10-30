@@ -4,16 +4,15 @@ with lib;
 
 let
   obsidian-startup = pkgs.writeScriptBin "obsidian-startup" ''
-    #!${pkgs.zsh}/bin/zsh
-    set -e
+    #!${pkgs.bash}/bin/bash
 
     CONFIG="$HOME/.config/obsidian/obsidian.json"
-    
+
     if [[ -f "$CONFIG" ]]; then
-        sed -i.bak 's/,"open":true//g' "$CONFIG"
+        ${pkgs.gnused}/bin/sed -i 's/,"open":true//g' "$CONFIG"
     fi
 
-    obsidian &
+    ${pkgs.obsidian}/bin/obsidian
   '';
 in
 {

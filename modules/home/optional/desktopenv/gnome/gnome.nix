@@ -3,6 +3,10 @@ let
   cfg = config.features.desktopenv.gnome;
 in
 {
+  imports = [
+    ./keybinds.nix
+  ];
+
   options.features.desktopenv.gnome = {
     enable = lib.mkEnableOption "GNOME Desktop Environment";
   };
@@ -23,12 +27,8 @@ in
     # GTK theme configuration
     gtk = {
       enable = true;
-      gtk3.extraConfig = {
-        gtk-application-prefer-dark-theme = true;
-      };
-      gtk4.extraConfig = {
-        gtk-application-prefer-dark-theme = true;
-      };
+      gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
+      gtk4.extraConfig.gtk-application-prefer-dark-theme = true;
     };
 
     dconf.settings = {

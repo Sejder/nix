@@ -12,7 +12,7 @@ in
     };
 
   config = lib.mkIf cfg.enable {
-    services.xserver.displayManager = {
+    services.displayManager = {
       gdm = {
         enable = true;
 

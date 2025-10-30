@@ -20,13 +20,12 @@ in
   };
   
   config = lib.mkIf cfg.enable {
-    services.displayManager.gdm.enable = true;
+    features.displayManagers.gdm.enable = lib.mkDefault true;
+    features.displayManagers.autoLogin.enable = lib.mkDefault true;
     services.desktopManager.gnome.enable = true;
     services.xserver.enable = true;
     systemd.services."getty@tty1".enable = false;
     systemd.services."autovt@tty1".enable = false;
-    services.displayManager.autoLogin.enable = true;
-    services.displayManager.autoLogin.user = config.systemUsers.primaryUser;
 
     # Disable power-profiles-daemon to avoid conflict with TLP
     services.power-profiles-daemon.enable = false;
