@@ -10,7 +10,7 @@ in
   options.features.desktopenv.gnome = {
     enable = lib.mkEnableOption "GNOME Desktop Environment";
   };
-
+  
   config = lib.mkIf cfg.enable {
     # GNOME-specific packages for the user
     home.packages = with pkgs; [
