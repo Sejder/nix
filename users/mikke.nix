@@ -17,7 +17,7 @@
     };
 
     browsers.firefox.enable = true;
-    desktopenv.plasma.enable = true;
+    desktopenv.cosmic.enable = true;
     apps.enable = true;
     programmingLanguages.enable = true;
     scripts = {

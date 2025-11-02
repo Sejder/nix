@@ -17,11 +17,6 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
     nix-secrets = {
       url = "git+ssh://git@github.com/Mikkelsej/nix-secrets.git?ref=main";
       flake = false;
@@ -33,7 +28,6 @@
     home-manager,
     nixos-hardware,
     nvf,
-    plasma-manager,
     agenix,
     nix-secrets,
     ...
