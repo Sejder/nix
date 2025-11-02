@@ -17,7 +17,7 @@
     };
 
     browsers.firefox.enable = true;
-    desktopenv.gnome.enable = true;
+    desktopenv.plasma.enable = true;
     apps.enable = true;
     programmingLanguages.enable = true;
     scripts = {
@@ -36,11 +36,11 @@ home = {
     packages = with pkgs; [ 
       obs-studio
     ];
+    
   };
-
+  
   programs.home-manager = {
     enable = true;
-
   };
 
 }
