@@ -59,7 +59,6 @@
               };
               sharedModules = [
                 nvf.homeManagerModules.default
-                inputs.plasma-manager.homeModules.plasma-manager
               ];
               backupCommand = "${pkgs.trashy}/bin/trash";
             };
