@@ -9,7 +9,7 @@
     editors = {
       vscode.enable = true;
       nvf.enable = true;
-      intellij.enable = true;
+      jetbrains.enable = true;
     };
 
     chatbots = {

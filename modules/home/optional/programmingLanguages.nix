@@ -74,7 +74,6 @@ in {
       home.packages = with pkgs; [
         uv
         python312
-        jetbrains.pycharm-professional
       ];
       
       programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
@@ -122,7 +121,6 @@ in {
         #rustfmt
         #clippy
         rustup
-        jetbrains.rust-rover
       ];
       
       programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
@@ -170,7 +168,6 @@ in {
 
     (lib.mkIf cfg.c-sharp.enable {
       home.packages = with pkgs; [
-        jetbrains.rider
         dotnetCorePackages.dotnet_9.sdk
       ];
     })
