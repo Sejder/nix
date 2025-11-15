@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, deviceType ? "", ... }:
 
 {
   imports = [
@@ -18,7 +18,8 @@
     };
 
     browsers.firefox.enable = true;
-    desktopenv.cosmic.enable = true;
+    desktopenv.cosmic.enable = deviceType != "server";
+    desktopenv.hyprland.enable = deviceType == "server";
     apps.enable = true;
     programmingLanguages.enable = false;
     scripts = {
