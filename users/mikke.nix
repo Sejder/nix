@@ -20,7 +20,7 @@
     browsers.firefox.enable = true;
     desktopenv.cosmic.enable = true;
     apps.enable = true;
-    programmingLanguages.enable = true;
+    programmingLanguages.enable = false;
     scripts = {
       ytdownloader.enable = true;
       cloudBackup = {
