@@ -14,6 +14,7 @@
 
     chatbots = {
       github-copilot.enable = true;
+      claude-code.enable = true;
     };
 
     browsers.firefox.enable = true;

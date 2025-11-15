@@ -26,6 +26,11 @@ in
       nextcloud-client
       vlc
       mattermost-desktop
+      zip
+      unzip
+      wget
+      jetbrains-toolbox
+      unityhub
       
     ];
 

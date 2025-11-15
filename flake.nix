@@ -13,10 +13,10 @@
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # agenix = {
+    #   url = "github:ryantm/agenix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,7 +34,7 @@
     nixos-hardware,
     nvf,
     plasma-manager,
-    agenix,
+    # agenix,
     nix-secrets,
     ...
   } @ inputs: let
@@ -50,7 +50,7 @@
         specialArgs = {inherit inputs lib nix-secrets;};
         modules = [
           ./hosts/${hostName}/configuration.nix
-          agenix.nixosModules.default
+          # agenix.nixosModules.default
           home-manager.nixosModules.home-manager
           ({config, ...}: {
             home-manager = {
