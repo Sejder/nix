@@ -21,7 +21,7 @@
     desktopenv.cosmic.enable = deviceType != "server";
     desktopenv.hyprland.enable = deviceType == "server";
     apps.enable = true;
-    programmingLanguages.enable = true;
+    programmingLanguages.enable = false;
     scripts = {
       ytdownloader.enable = true;
       cloudBackup = {

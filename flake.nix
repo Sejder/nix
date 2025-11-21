@@ -77,6 +77,7 @@
       ideapad = mkHost "ideapad";
       home = mkHost "home";
       slimbook = mkHost "slimbook";
+	galaxybook = mkHost "galaxybook";
     };
     homeConfigurations.mikke = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
