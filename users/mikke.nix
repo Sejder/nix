@@ -1,6 +1,9 @@
-{ config, pkgs, deviceType ? "", ... }:
-
 {
+  config,
+  pkgs,
+  deviceType ? "",
+  ...
+}: {
   imports = [
     ../modules/home
   ];
@@ -15,6 +18,7 @@
     chatbots = {
       github-copilot.enable = true;
       claude-code.enable = true;
+      gemini.enable = true;
     };
 
     browsers.firefox.enable = true;
@@ -31,18 +35,16 @@
     };
   };
 
-home = {
+  home = {
     username = "mikke";
     homeDirectory = "/home/${config.home.username}";
     stateVersion = "25.05";
-    packages = with pkgs; [ 
+    packages = with pkgs; [
       obs-studio
     ];
-    
   };
-  
+
   programs.home-manager = {
     enable = true;
   };
-
 }

@@ -1,6 +1,8 @@
-{ config, lib, ... }:
-
 {
+  config,
+  lib,
+  ...
+}: {
   config = lib.mkIf config.features.desktopenv.hyprland.enable {
     wayland.windowManager.hyprland.settings = {
       # Variables
@@ -20,6 +22,7 @@
       ];
 
       # Monitor Configuration
+      # name,resolution,position,scale
       monitor = [
         "eDP-1,preferred,auto,auto"
         "DP-1,preferred,auto-left,auto"

@@ -1,13 +1,11 @@
 {
   config,
-  pkgs,
+  unstable-pkgs,
   lib,
   ...
-}: 
-let 
+}: let
   cfg = config.features.chatbots.github-copilot;
-in
-{
+in {
   options.features.chatbots.github-copilot = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -16,19 +14,18 @@ in
     };
   };
 
-
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
+    home.packages = with unstable-pkgs; [
       github-copilot-cli
     ];
 
     programs.vscode.profiles.default = {
-      extensions = with pkgs.vscode-extensions; [
+      extensions = with unstable-pkgs.vscode-extensions; [
         github.copilot
       ];
 
       userSettings = {
-          "chat.agent.enabled" = true;
+        "chat.agent.enabled" = true;
       };
     };
   };

@@ -2,12 +2,12 @@
   config,
   pkgs,
   lib,
+  unstable-pkgs,
+  claude-desktop,
   ...
-}: 
-let 
+}: let
   cfg = config.features.chatbots.claude-code;
-in
-{
+in {
   options.features.chatbots.claude-code = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -16,15 +16,18 @@ in
     };
   };
 
-
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
-      claude-code
-      nodejs-slim # Required for claude-code
-    ];
+    home.packages = with pkgs;
+      [
+        nodejs-slim # Required for claude-code
+      ]
+      ++ (with unstable-pkgs; [
+        claude-code
+        claude-desktop.packages.${pkgs.system}.claude-desktop-with-fhs
+      ]);
 
-    programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
-        anthropic.claude-code
-      ];
+    programs.vscode.profiles.default.extensions = with unstable-pkgs.vscode-extensions; [
+      anthropic.claude-code
+    ];
   };
 }

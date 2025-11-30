@@ -1,13 +1,15 @@
-{ config, lib, ... }:
-
 {
+  config,
+  lib,
+  ...
+}: {
   config = lib.mkIf config.features.desktopenv.hyprland.enable {
     wayland.windowManager.hyprland = {
       settings = {
-      # Keybindings
+        # Keybindings
         bind = [
           # Applications
-          "$mainMod, RETURN, exec, $terminal"
+          "$mainMod, T, exec, $terminal"
           "$mainMod, B, exec, $browser"
           "$mainMod, F, exec, $filemanager"
           "$mainMod, space, exec, rofi -show combi"
@@ -22,7 +24,7 @@
           "$mainMod SHIFT, Q, exec, hyprctl activewindow | grep pid | tr -d 'pid:' | xargs kill"
           "$mainMod, E, fullscreen, 0"
           "$mainMod, M, fullscreen, 1"
-          "$mainMod, T, togglefloating"
+          #"$mainMod, T, togglefloating"
           "$mainMod SHIFT, T, workspaceopt, allfloat"
           "$mainMod, J, togglesplit"
           "$mainMod, left, movefocus, l"
@@ -102,3 +104,4 @@
     };
   };
 }
+
