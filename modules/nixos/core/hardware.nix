@@ -1,10 +1,10 @@
-{ config, lib, ... }:
-
-
-let
-  cfg = config.features.settings;
-in
 {
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.features.settings;
+in {
   options.features.settings = {
     audio.enable = lib.mkOption {
       type = lib.types.bool;
@@ -17,10 +17,14 @@ in
       default = true;
       description = "Enable bluetooth";
     };
+    logitech.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = "Enable Logitech Unifying receiver";
+    };
   };
 
   config = lib.mkMerge [
-
     (lib.mkIf cfg.audio.enable {
       services.pulseaudio.enable = false;
       security.rtkit.enable = true;
@@ -35,11 +39,30 @@ in
         # use the example session manager (no others are packaged yet so this is enabled by default,
         # no need to redefine it in your config for now)
         #media-session.enable = true;
-        };
+      };
     })
 
     (lib.mkIf cfg.bluetooth.enable {
-      hardware.bluetooth.enable = true;
+      hardware.bluetooth = {
+        enable = true;
+        powerOnBoot = true;
+        settings = {
+          General = {
+            Name = "Hello";
+            ControllerMode = "dual";
+            FastConnectable = "true";
+            Experimental = "true";
+          };
+          Policy = {
+            AutoEnable = "true";
+          };
+        };
+      };
+    })
+
+    (lib.mkIf cfg.logitech.enable {
+      hardware.logitech.wireless.enable = true;
+      hardware.logitech.wireless.enableGraphical = true;
     })
   ];
 }

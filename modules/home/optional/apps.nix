@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  unstable-pkgs,
   lib,
   ...
 }: let
@@ -15,19 +16,19 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
-      vscode
-      obsidian
-      spotify
-      discord
-      gparted
-      nextcloud-client
-      vlc
-      mattermost-desktop
-      zip
-      unzip
-      wget
-      unityhub
+    home.packages = [
+      pkgs.vscode
+      pkgs.obsidian
+      pkgs.spotify
+      pkgs.discord
+      pkgs.gparted
+      pkgs.nextcloud-client
+      pkgs.vlc
+      pkgs.mattermost-desktop
+      pkgs.zip
+      pkgs.unzip
+      pkgs.wget
+      pkgs.unityhub
     ];
 
     features.scripts.obsidian-startup.enable = true;

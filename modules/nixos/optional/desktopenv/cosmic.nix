@@ -29,6 +29,7 @@ in {
     services.desktopManager.cosmic.enable = true;
     services.desktopManager.cosmic.xwayland.enable = true;
     services.power-profiles-daemon.enable = false;
+    services.system76-scheduler.enable = true;
+    hardware.system76.enableAll = true;
   };
 }
-

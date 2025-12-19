@@ -1,8 +1,11 @@
-{ config, pkgs, lib, ... }:
-let
-  cfg = config.features.git;
-in
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+  cfg = config.features.git;
+in {
   options.features.git.enable = lib.mkOption {
     type = lib.types.bool;
     default = true;
@@ -12,16 +15,15 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       git
+      lazygit
     ];
 
     programs.git = {
       enable = true;
-      
-      
 
       settings = {
         user = {
-          name  = "Mikkelsej";
+          name = "Sejder";
           email = "mikkel.sejdelin@gmail.com";
         };
         push = {

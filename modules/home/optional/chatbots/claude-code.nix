@@ -19,15 +19,15 @@ in {
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs;
       [
-        nodejs-slim # Required for claude-code
+        nodejs_20
       ]
       ++ (with unstable-pkgs; [
         claude-code
-        claude-desktop.packages.${pkgs.system}.claude-desktop-with-fhs
+        claude-desktop.packages.${pkgs.stdenv.hostPlatform.system}.claude-desktop-with-fhs
       ]);
 
     programs.vscode.profiles.default.extensions = with unstable-pkgs.vscode-extensions; [
-      anthropic.claude-code
+      #anthropic.claude-code
     ];
   };
 }

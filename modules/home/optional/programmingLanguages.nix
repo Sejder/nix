@@ -62,20 +62,20 @@ in {
         nixd
         nixfmt-rfc-style
       ];
-      
+
       programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
         bbenoist.nix
       ];
-      
+
       programs.nvf.settings.vim.languages.nix.enable = true;
     })
-    
+
     (lib.mkIf cfg.python.enable {
       home.packages = with pkgs; [
         uv
         python312
       ];
-      
+
       programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
         ms-python.python
         ms-python.pylint
@@ -88,7 +88,6 @@ in {
         "python.analysis.typeCheckingMode" = "standard";
         "python.editor.defaultFormatter" = "ms-python.black-formatter";
       };
-      
 
       programs.nvf.settings.vim.languages.python.enable = true;
     })
@@ -98,17 +97,18 @@ in {
         openjdk
         gradle
       ];
-      
+
       programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
         vscjava.vscode-java-pack
       ];
-      
+
       programs.nvf.settings.vim.languages.java.enable = true;
     })
 
     (lib.mkIf cfg.c.enable {
       home.packages = with pkgs; [
         gcc
+        gdb
       ];
       programs.nvf.settings.vim.languages.clang.enable = true;
     })
@@ -122,16 +122,15 @@ in {
         #clippy
         rustup
       ];
-      
+
       programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
         rust-lang.rust-analyzer
       ];
-      
+
       programs.nvf.settings.vim.languages.rust.enable = true;
     })
 
     (lib.mkIf cfg.R.enable {
-
       home.packages = let
         sharedRPackages = with pkgs.rPackages; [
           rmarkdown
@@ -157,14 +156,15 @@ in {
         pkgs.R
         pkgs.pandoc
       ];
-      
+
       programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
         reditorsupport.r
         reditorsupport.r-syntax
       ];
-      
+
       programs.nvf.settings.vim.languages.r.enable = true;
-    })
+
+        })
 
     (lib.mkIf cfg.c-sharp.enable {
       home.packages = with pkgs; [
@@ -173,4 +173,3 @@ in {
     })
   ];
 }
-

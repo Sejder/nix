@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   unstable-pkgs,
   lib,
   ...
@@ -20,7 +21,7 @@ in {
     ];
 
     programs.vscode.profiles.default = {
-      extensions = with unstable-pkgs.vscode-extensions; [
+      extensions = with pkgs.vscode-extensions; [
         github.copilot
       ];
 
