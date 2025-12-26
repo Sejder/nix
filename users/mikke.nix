@@ -13,6 +13,7 @@
       vscode.enable = true;
       nvf.enable = true;
       jetbrains.enable = true;
+      zed.enable = true;
     };
 
     chatbots = {

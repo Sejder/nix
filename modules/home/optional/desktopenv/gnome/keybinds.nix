@@ -1,6 +1,9 @@
-{ config, pkgs, lib, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   dconf.settings = {
     # Window manager keybindings
     "org/gnome/desktop/wm/keybindings" = {
@@ -48,7 +51,7 @@
     # Custom keybinding: IntelliJ
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
       name = "Open IntelliJ";
-      command = "${pkgs.jetbrains.idea-ultimate}/bin/idea-ultimate";
+      command = "${pkgs.jetbrains.idea}/bin/idea-ultimate";
       binding = "<Super>i";
     };
 

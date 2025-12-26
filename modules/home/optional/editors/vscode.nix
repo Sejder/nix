@@ -41,6 +41,7 @@ in
               loyaltyBonus = true;
             };
             autoIndentOnPaste = true;
+            wordBasedSuggestions = "off";
           };
           "explorer.confirmDragAndDrop" = false;
           "workbench.secondarySideBar.defaultVisibility" = "hidden";

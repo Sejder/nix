@@ -18,7 +18,7 @@ in {
     home.packages = with unstable-pkgs; [
       gemini-cli
       antigravity
-      google-chrome
+      #google-chrome
     ];
   };
 }

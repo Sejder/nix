@@ -3,9 +3,11 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.features.programmingLanguages;
-in {
+in
+{
   options.features.programmingLanguages = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -89,6 +91,10 @@ in {
         "python.editor.defaultFormatter" = "ms-python.black-formatter";
       };
 
+      programs.zed-editor.extensions = [
+        "python"
+      ];
+
       programs.nvf.settings.vim.languages.python.enable = true;
     })
 
@@ -102,6 +108,10 @@ in {
         vscjava.vscode-java-pack
       ];
 
+      programs.zed-editor.extensions = [
+        "java"
+      ];
+      
       programs.nvf.settings.vim.languages.java.enable = true;
     })
 
@@ -127,48 +137,62 @@ in {
         rust-lang.rust-analyzer
       ];
 
+      programs.zed-editor.extensions = [
+        "rust"
+      ];
+      
       programs.nvf.settings.vim.languages.rust.enable = true;
     })
 
     (lib.mkIf cfg.R.enable {
-      home.packages = let
-        sharedRPackages = with pkgs.rPackages; [
-          rmarkdown
-          stringi
-          stringr
-          bslib
-          sass
-          ggplot2
-          dplyr
-          xts
-          languageserver
-          pandoc
+      home.packages =
+        let
+          sharedRPackages = with pkgs.rPackages; [
+            rmarkdown
+            stringi
+            stringr
+            bslib
+            sass
+            ggplot2
+            dplyr
+            xts
+            languageserver
+            pandoc
+          ];
+        in
+        [
+          (pkgs.rstudioWrapper.override {
+            packages = sharedRPackages;
+          })
+
+          (pkgs.rWrapper.override {
+            packages = sharedRPackages;
+          })
+
+          pkgs.R
+          pkgs.pandoc
         ];
-      in [
-        (pkgs.rstudioWrapper.override {
-          packages = sharedRPackages;
-        })
-
-        (pkgs.rWrapper.override {
-          packages = sharedRPackages;
-        })
-
-        pkgs.R
-        pkgs.pandoc
-      ];
 
       programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
         reditorsupport.r
         reditorsupport.r-syntax
       ];
 
+      programs.zed-editor.extensions = [
+        "R"
+      ];
+      
       programs.nvf.settings.vim.languages.r.enable = true;
 
-        })
+    })
 
     (lib.mkIf cfg.c-sharp.enable {
       home.packages = with pkgs; [
         dotnetCorePackages.dotnet_9.sdk
+      ];
+      
+      programs.zed-editor.extensions = [
+        "C#"
       ];
     })
   ];

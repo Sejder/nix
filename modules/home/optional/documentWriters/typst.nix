@@ -3,9 +3,11 @@
   unstable-pkgs,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.features.documentWriters.typst;
-in {
+in
+{
   options.features.documentWriters.typst = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -19,6 +21,22 @@ in {
       typst
     ];
 
+    programs.zed-editor = {
+      extensions = [
+        "typst"
+      ];
+      userSettings = {
+        lsp = {
+          tinymist = {
+            settings = {
+              exportPdf = "onSave";
+              outputPath = "$root/$name";
+            };
+          };
+        };
+      };
+    };
+
     programs.vscode.profiles.default = {
       extensions = with unstable-pkgs.vscode-extensions; [
         myriad-dreamin.tinymist
@@ -27,8 +45,10 @@ in {
       userSettings = {
         tinymist.exportPdf = "onType";
         tinymist.statusBarFormat = "{compileStatusIcon} {wordCount} {charCount} [{fileName}]";
+        github.copilot.enable = {
+          "typst" = false;
+        };
       };
     };
   };
 }
-
