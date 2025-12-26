@@ -1,9 +1,11 @@
-{ config, lib, hostName, ... }:
-
-let
-  cfg = config.features.shell.zsh;
-in
 {
+  config,
+  lib,
+  hostName,
+  ...
+}: let
+  cfg = config.features.shell.zsh;
+in {
   config = lib.mkIf cfg.enable {
     # Aliases
     programs.zsh.shellAliases = {
@@ -32,11 +34,12 @@ in
       gcheck = "git checkout";
       gcredential = "git config credential.helper store";
 
-      switch-flake="nixos-rebuild switch --flake 'path:/home/${config.home.username}/nix/#${hostName}' --sudo";
-      test-flake="nixos-rebuild test --flake 'path:/home/${config.home.username}/nix/#${hostName}' --sudo";
+      switch-flake = "nixos-rebuild switch --flake 'path:/home/${config.home.username}/nix/#${hostName}' --sudo";
+      test-flake = "nixos-rebuild test --flake 'path:/home/${config.home.username}/nix/#${hostName}' --sudo";
 
-      home-switch = "home-manager switch --flake 'path:/home/${config.home.username}/nix#${config.home.username}'";
+      switch-home = "home-manager switch --flake 'path:/home/${config.home.username}/nix#${config.home.username}'";
       update-flake = "nix flake update --flake 'path:/home/${config.home.username}/nix' && switch-flake";
     };
   };
 }
+
