@@ -26,6 +26,7 @@
     server.enable = false;
     nix-ld.enable = true;
     virtualisation.docker.enable = true;
+    apps.mathematica.enable = true;
   };
 
   hardware.graphics.enable = true;
