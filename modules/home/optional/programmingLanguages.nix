@@ -61,11 +61,6 @@ in
 
   config = lib.mkMerge [
     (lib.mkIf cfg.nix.enable {
-      home.packages = with pkgs; [
-        nixd
-        nixfmt-rfc-style
-      ];
-
       programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
         bbenoist.nix
       ];

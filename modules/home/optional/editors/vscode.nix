@@ -13,7 +13,6 @@ in
   config = lib.mkIf (cfg.enable && config.features.apps.enable) {
     home.packages = with pkgs; [
       vscode
-      nil
     ];
 
     programs.vscode = {

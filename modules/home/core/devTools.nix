@@ -23,6 +23,14 @@ in
   };
 
   config = lib.mkMerge [
+    {
+      # Nix tools always available (this is a NixOS config)
+      home.packages = with pkgs; [
+        nil
+        nixd
+        nixfmt-rfc-style
+      ];
+    }
 
     (lib.mkIf cfg.direnv.enable {
       programs.direnv = {
