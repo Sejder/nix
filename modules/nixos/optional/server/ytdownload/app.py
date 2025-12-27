@@ -213,7 +213,13 @@ def download():
 
                     # Run rclone move command
                     current_process = subprocess.Popen(
-                        ["rclone", "move", "Videos", "cloud:/Videos", "-v"],
+                        [
+                            "rclone",
+                            "move",
+                            "Videos",
+                            "cloud:/netgear/Videos",
+                            "-v",
+                        ],
                         stdout=subprocess.PIPE,
                         stderr=subprocess.STDOUT,
                         universal_newlines=True,
@@ -230,7 +236,7 @@ def download():
 
                     if rclone_return_code == 0:
                         output_queue.put(
-                            "\n🎉 Upload completed successfully! Files moved to cloud:/Videos\n"
+                            "\n🎉 Upload completed successfully! Files moved to cloud:/netgear/Videos\n"
                         )
                     else:
                         output_queue.put(
@@ -276,4 +282,3 @@ def get_output():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8001)
-

@@ -16,15 +16,15 @@ in {
   config = lib.mkIf cfg.enable {
     services.ollama = {
       enable = true;
-      loadModels = ["llama3.2" "deepseek-r1" "mistral" "qwen3"];
+      loadModels = ["llama3.2" "deepseek-r1" "qwen3-vl:latest"];
       user = "ollama";
       group = "ollama";
       port = 11434;
     };
-    #services.open-webui = {
-    #enable = true;
-    #port = 11111;
-    #};
+    services.open-webui = {
+      enable = true;
+      port = 11111;
+    };
 
     services.nginx.virtualHosts = {
       "chat.${config.networking.hostName}" = {

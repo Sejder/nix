@@ -27,6 +27,7 @@
       enable = true;
       llm.ollama.enable = true;
     };
+    virtualisation.docker.enable = true;
   };
 
   fileSystems."/ssd" = {

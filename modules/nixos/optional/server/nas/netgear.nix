@@ -21,8 +21,8 @@ in {
           {
             addr = "0.0.0.0";
             port = 80;
-            }
-          ];
+          }
+        ];
         locations."/" = {
           proxyPass = "http://192.168.87.165:80";
           proxyWebsockets = true;
@@ -42,7 +42,7 @@ in {
     services.rpcbind.enable = true;
 
     fileSystems."/data" = {
-      device = "192.168.87.165:/c/data";
+      device = "192.168.87.165:/c/netgear";
       fsType = "nfs";
       options = ["vers=3"];
     };
