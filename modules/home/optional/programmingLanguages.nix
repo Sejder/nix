@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  deviceType,
   ...
 }:
 let
@@ -160,11 +161,12 @@ in
             pandoc
           ];
         in
-        [
+        lib.optionals (deviceType == "laptop") [
           (pkgs.rstudioWrapper.override {
             packages = sharedRPackages;
           })
-
+        ]
+        ++ [
           (pkgs.rWrapper.override {
             packages = sharedRPackages;
           })

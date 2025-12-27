@@ -16,7 +16,7 @@ in {
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf (cfg.enable && config.features.apps.enable) {
     home.packages = with pkgs;
       [
         nodejs_20

@@ -10,7 +10,7 @@ in
 {
   options.features.editors.zed.enable = lib.mkEnableOption "Enable zed as editor";
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf (cfg.enable && config.features.apps.enable) {
     home.packages = with unstable-pkgs; [
       zed-editor
     ];

@@ -15,7 +15,7 @@ in {
     };
   };
 
-  config = lib.mkIf jetbrainsCfg.enable {
+  config = lib.mkIf (jetbrainsCfg.enable && config.features.apps.enable) {
     home.file.".config/jetbrains-vmoptions".text = ''
       -Dawt.toolkit.name=WLToolkit
       -Xms512m

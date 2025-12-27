@@ -29,6 +29,8 @@ in {
       pkgs.unzip
       pkgs.wget
       pkgs.unityhub
+      pkgs.obs-studio
+      pkgs.geogebra
     ];
 
     features.scripts.obsidian-startup.enable = true;

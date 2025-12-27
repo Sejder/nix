@@ -10,7 +10,7 @@ in
 {
   options.features.editors.vscode.enable = lib.mkEnableOption "Enable vscode as editor";
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf (cfg.enable && config.features.apps.enable) {
     home.packages = with pkgs; [
       vscode
       nil

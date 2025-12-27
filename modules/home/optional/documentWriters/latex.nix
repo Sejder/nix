@@ -1,4 +1,4 @@
-{config, pkgs, lib, ... }:
+{config, pkgs, lib, deviceType, ... }:
 
 let
   cfg = config.features.documentWriters.latex;
@@ -15,7 +15,7 @@ in
 
   };
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf (cfg.enable && deviceType == "laptop") {
     
     home.packages = with pkgs; [
       texliveFull
