@@ -25,7 +25,7 @@
     browsers.firefox.enable = true;
     desktopenv.cosmic.enable = deviceType != "server";
     desktopenv.hyprland.enable = deviceType == "server";
-    apps.enable = true;
+    apps.enable = deviceType == "laptop";
     programmingLanguages.enable = true;
     scripts = {
       ytdownloader.enable = true;
