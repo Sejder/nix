@@ -11,13 +11,17 @@
       dates = [ "11:30" ];
     };
 
-    gc = {
-      automatic = true;
-      dates = "11:15";
-      options = "--delete-older-than 10d";
+  };
+
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
+      dates = "daily";
+      extraArgs = "--keep 5 --keep-since 10d";
     };
   };
-  
+
   services.printing.enable = true;
   networking.networkmanager.enable = true;
 
