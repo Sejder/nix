@@ -107,7 +107,7 @@ in
       programs.zed-editor.extensions = [
         "java"
       ];
-      
+
       programs.nvf.settings.vim.languages.java.enable = true;
     })
 
@@ -136,7 +136,7 @@ in
       programs.zed-editor.extensions = [
         "rust"
       ];
-      
+
       programs.nvf.settings.vim.languages.rust.enable = true;
     })
 
@@ -178,7 +178,7 @@ in
       programs.zed-editor.extensions = [
         "R"
       ];
-      
+
       programs.nvf.settings.vim.languages.r.enable = true;
 
     })
@@ -187,7 +187,7 @@ in
       home.packages = with pkgs; [
         dotnetCorePackages.dotnet_9.sdk
       ];
-      
+
       programs.zed-editor.extensions = [
         "C#"
       ];

@@ -1,16 +1,20 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../../modules/nixos
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ../../modules/nixos
+  ];
 
   networking.hostName = "slimbook";
 
   systemUsers = {
-    users = ["mikke"];
+    users = [ "mikke" ];
     primaryUser = "mikke";
   };
 

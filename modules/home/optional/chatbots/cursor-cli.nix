@@ -3,8 +3,8 @@
   pkgs,
   lib,
   ...
-}: 
-let 
+}:
+let
   cfg = config.features.chatbots.cursor-cli;
 in
 {
@@ -15,7 +15,6 @@ in
       description = "Enable cursor-cli";
     };
   };
-
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [

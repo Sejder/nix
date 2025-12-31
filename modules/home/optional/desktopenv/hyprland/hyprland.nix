@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   cfg = config.features.desktopenv.hyprland;
 in
@@ -37,11 +42,11 @@ in
         enable = true;
         xwayland.enable = true;
         systemd.variables = [ "--all" ];
-        
+
       };
 
       services.swayosd = {
-          enable = true;
+        enable = true;
       };
 
       home.packages = with pkgs; [
@@ -85,5 +90,5 @@ in
       ];
     })
   ];
-  
+
 }

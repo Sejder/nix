@@ -4,9 +4,11 @@
   lib,
   nix-secrets,
   ...
-}: let
+}:
+let
   cfg = config.features.server.nextcloud;
-in {
+in
+{
   options.features.server.nextcloud = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -44,7 +46,7 @@ in {
           "127.0.0.1"
           "cloud.${config.networking.hostName}"
         ];
-        trusted_proxies = ["127.0.0.1"];
+        trusted_proxies = [ "127.0.0.1" ];
         enabledPreviewProviders = [
           "OC\\Preview\\BMP"
           "OC\\Preview\\GIF"

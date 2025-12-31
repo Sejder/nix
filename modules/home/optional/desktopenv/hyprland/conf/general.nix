@@ -2,7 +2,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   config = lib.mkIf config.features.desktopenv.hyprland.enable {
     wayland.windowManager.hyprland.settings = {
       # Variables

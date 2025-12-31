@@ -3,10 +3,12 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.features.programmingLanguages;
   jetbrainsCfg = config.features.editors.jetbrains;
-in {
+in
+{
   options.features.editors.jetbrains = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -25,24 +27,28 @@ in {
 
     home.sessionVariables =
       (
-        if cfg.java.enable
-        then {IDEA_VM_OPTIONS = "${config.home.homeDirectory}/.config/jetbrains-vmoptions";}
-        else {}
+        if cfg.java.enable then
+          { IDEA_VM_OPTIONS = "${config.home.homeDirectory}/.config/jetbrains-vmoptions"; }
+        else
+          { }
       )
       // (
-        if cfg.python.enable
-        then {PYCHARM_VM_OPTIONS = "${config.home.homeDirectory}/.config/jetbrains-vmoptions";}
-        else {}
+        if cfg.python.enable then
+          { PYCHARM_VM_OPTIONS = "${config.home.homeDirectory}/.config/jetbrains-vmoptions"; }
+        else
+          { }
       )
       // (
-        if cfg.c-sharp.enable
-        then {RIDER_VM_OPTIONS = "${config.home.homeDirectory}/.config/jetbrains-vmoptions";}
-        else {}
+        if cfg.c-sharp.enable then
+          { RIDER_VM_OPTIONS = "${config.home.homeDirectory}/.config/jetbrains-vmoptions"; }
+        else
+          { }
       )
       // (
-        if cfg.rust.enable
-        then {RUSTROVER_VM_OPTIONS = "${config.home.homeDirectory}/.config/jetbrains-vmoptions";}
-        else {}
+        if cfg.rust.enable then
+          { RUSTROVER_VM_OPTIONS = "${config.home.homeDirectory}/.config/jetbrains-vmoptions"; }
+        else
+          { }
       );
 
     home.packages = lib.concatLists [

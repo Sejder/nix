@@ -3,9 +3,11 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.features.server;
-in {
+in
+{
   options.features.server = {
     enable = lib.mkEnableOption "Enable this host as a server";
   };

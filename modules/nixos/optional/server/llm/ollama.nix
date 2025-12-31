@@ -2,9 +2,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.features.server.llm.ollama;
-in {
+in
+{
   options.features.server.llm.ollama = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -16,7 +18,11 @@ in {
   config = lib.mkIf cfg.enable {
     services.ollama = {
       enable = true;
-      loadModels = ["llama3.2" "deepseek-r1" "qwen3-vl:latest"];
+      loadModels = [
+        "llama3.2"
+        "deepseek-r1"
+        "qwen3-vl:latest"
+      ];
       user = "ollama";
       group = "ollama";
       port = 11434;

@@ -1,4 +1,9 @@
-{config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   cfg = config.features.shell.zsh;
@@ -8,12 +13,12 @@ in
     type = lib.types.bool;
     default =
       let
-        users = config.systemUsers.users or ["mikke"];
-        anyUserHasZsh = lib.any (user:
-          config.home-manager.users.${user}.features.shell.zsh.enable or false
+        users = config.systemUsers.users or [ "mikke" ];
+        anyUserHasZsh = lib.any (
+          user: config.home-manager.users.${user}.features.shell.zsh.enable or false
         ) users;
       in
-        anyUserHasZsh;
+      anyUserHasZsh;
     description = "Enable zsh";
   };
 
@@ -23,10 +28,13 @@ in
     };
 
     # Set zsh as shell for all users who have it enabled
-    users.users = lib.mkMerge (map (user:
-      lib.mkIf (config.home-manager.users.${user}.features.shell.zsh.enable or false) {
-        ${user}.shell = pkgs.zsh;
-      }
-    ) config.systemUsers.users);
+    users.users = lib.mkMerge (
+      map (
+        user:
+        lib.mkIf (config.home-manager.users.${user}.features.shell.zsh.enable or false) {
+          ${user}.shell = pkgs.zsh;
+        }
+      ) config.systemUsers.users
+    );
   };
 }

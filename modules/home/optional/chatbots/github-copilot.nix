@@ -4,9 +4,11 @@
   unstable-pkgs,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.features.chatbots.github-copilot;
-in {
+in
+{
   options.features.chatbots.github-copilot = {
     enable = lib.mkOption {
       type = lib.types.bool;

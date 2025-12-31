@@ -25,11 +25,11 @@ in
       plymouth = {
         enable = true;
       };
-      consoleLogLevel = 0;  
-      kernelParams = [ 
+      consoleLogLevel = 0;
+      kernelParams = [
         "quiet"
         "loglevel=0"
-        ];  
+      ];
       initrd.verbose = false;
       loader = {
         efi.canTouchEfiVariables = true;
@@ -49,6 +49,6 @@ in
           theme = ../../../../assets/grubThemes/Particle-window/${deviceCfg.resolution};
         };
       };
-    }; 
+    };
   };
 }

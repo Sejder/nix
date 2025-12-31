@@ -2,9 +2,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.features.settings;
-in {
+in
+{
   options.features.settings = {
     audio.enable = lib.mkOption {
       type = lib.types.bool;

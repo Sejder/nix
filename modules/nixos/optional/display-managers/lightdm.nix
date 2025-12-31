@@ -1,14 +1,18 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   cfg = config.features.displayManagers.lightdm;
 in
 {
-  options.features.displayManagers.lightdm.enable =
-    lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-      description = "Enable LightDM";
-    };
+  options.features.displayManagers.lightdm.enable = lib.mkOption {
+    type = lib.types.bool;
+    default = false;
+    description = "Enable LightDM";
+  };
 
   config = lib.mkIf cfg.enable {
     services.xserver = {
@@ -19,7 +23,7 @@ in
           greeters.enso = {
             enable = true;
           };
-          background = "/etc/sundown-over-sea.jpg";    
+          background = "/etc/sundown-over-sea.jpg";
         };
       };
     };

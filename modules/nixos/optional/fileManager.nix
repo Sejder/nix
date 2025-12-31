@@ -1,4 +1,9 @@
-{config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   cfg = config.features.fileManagers;
@@ -16,8 +21,8 @@ in
     (lib.mkIf cfg.nautilus.enable {
       environment.systemPackages = with pkgs; [
         nautilus
-        libheif 
-        libheif.out 
+        libheif
+        libheif.out
 
         gst_all_1.gst-plugins-good
         gst_all_1.gst-plugins-bad

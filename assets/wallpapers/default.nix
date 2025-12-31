@@ -1,8 +1,8 @@
 { config, lib, ... }:
 let
-  users = config.systemUsers.users or ["mikke"];
-  anyUserHasWallpaper = lib.any (user:
-    config.home-manager.users.${user}.features.desktopenv.hyprland.wallpaper.enable or false
+  users = config.systemUsers.users or [ "mikke" ];
+  anyUserHasWallpaper = lib.any (
+    user: config.home-manager.users.${user}.features.desktopenv.hyprland.wallpaper.enable or false
   ) users;
 in
 {

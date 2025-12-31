@@ -1,5 +1,9 @@
-{ config, pkgs, lib, ... }:
-
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   cfg = config.features.settings.keyring;
@@ -13,7 +17,7 @@ in
         description = "Enable Gnome keyring manager";
       };
     };
-    
+
   };
 
   config = lib.mkMerge [
@@ -23,7 +27,7 @@ in
 
       environment.systemPackages = with pkgs; [
         seahorse
-      ];  
+      ];
     })
   ];
 }

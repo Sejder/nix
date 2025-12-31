@@ -3,21 +3,21 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.features.desktopenv.cosmic;
-in {
+in
+{
   options.features.desktopenv.cosmic = {
     enable = lib.mkOption {
       type = lib.types.bool;
-      default = let
-        users = config.systemUsers.users or ["mikke"];
-        anyUserHascosmic =
-          lib.any (
-            user:
-              config.home-manager.users.${user}.features.desktopenv.cosmic.enable or false
-          )
-          users;
-      in
+      default =
+        let
+          users = config.systemUsers.users or [ "mikke" ];
+          anyUserHascosmic = lib.any (
+            user: config.home-manager.users.${user}.features.desktopenv.cosmic.enable or false
+          ) users;
+        in
         anyUserHascosmic;
       description = "Enable cosmic desktop environment";
     };

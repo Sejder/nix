@@ -3,7 +3,8 @@
   pkgs,
   deviceType ? "",
   ...
-}: {
+}:
+{
   imports = [
     ../modules/home
   ];

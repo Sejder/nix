@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   cfg = config.features.desktopenv.gnome;
 in
@@ -10,14 +15,14 @@ in
   options.features.desktopenv.gnome = {
     enable = lib.mkEnableOption "GNOME Desktop Environment";
   };
-  
+
   config = lib.mkIf cfg.enable {
     # GNOME-specific packages for the user
     home.packages = with pkgs; [
       gnome-tweaks
       gnomeExtensions.appindicator
     ];
-    home.file.".icons/default".source = "${pkgs.vanilla-dmz}/share/icons/Vanilla-DMZ"; 
+    home.file.".icons/default".source = "${pkgs.vanilla-dmz}/share/icons/Vanilla-DMZ";
     # Enable common apps that work well with GNOME
     features = {
       terminalEmulators.kitty.enable = lib.mkDefault true;

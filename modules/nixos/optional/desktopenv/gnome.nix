@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   cfg = config.features.desktopenv.gnome;
@@ -9,16 +14,16 @@ in
       type = lib.types.bool;
       default =
         let
-          users = config.systemUsers.users or ["mikke"];
-          anyUserHasGnome = lib.any (user:
-            config.home-manager.users.${user}.features.desktopenv.gnome.enable or false
+          users = config.systemUsers.users or [ "mikke" ];
+          anyUserHasGnome = lib.any (
+            user: config.home-manager.users.${user}.features.desktopenv.gnome.enable or false
           ) users;
         in
-          anyUserHasGnome;
+        anyUserHasGnome;
       description = "Enable GNOME desktop environment";
     };
   };
-  
+
   config = lib.mkIf cfg.enable {
     features.displayManagers.gdm.enable = lib.mkDefault true;
     features.displayManagers.autoLogin.enable = lib.mkDefault true;

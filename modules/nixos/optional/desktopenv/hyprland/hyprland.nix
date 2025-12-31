@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   cfg = config.features.desktopenv.hyprland;
 in
@@ -8,12 +13,12 @@ in
       type = lib.types.bool;
       default =
         let
-          users = config.systemUsers.users or ["mikke"];
-          anyUserHasHyprland = lib.any (user:
-            config.home-manager.users.${user}.features.desktopenv.hyprland.enable or false
+          users = config.systemUsers.users or [ "mikke" ];
+          anyUserHasHyprland = lib.any (
+            user: config.home-manager.users.${user}.features.desktopenv.hyprland.enable or false
           ) users;
         in
-          anyUserHasHyprland;
+        anyUserHasHyprland;
       description = "Enable hyprland";
     };
   };
@@ -40,4 +45,3 @@ in
     };
   };
 }
-

@@ -3,7 +3,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos
@@ -12,7 +13,7 @@
   networking.hostName = "home";
 
   systemUsers = {
-    users = ["mikke"];
+    users = [ "mikke" ];
     primaryUser = "mikke";
   };
 

@@ -4,9 +4,11 @@
   unstable-pkgs,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.features.apps;
-in {
+in
+{
   options.features.apps = {
     enable = lib.mkOption {
       type = lib.types.bool;

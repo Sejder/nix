@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   cfg = config.features.editors.neovim;
@@ -21,13 +26,12 @@ in
       vimAlias = true;
       withNodeJs = true;
 
-      extraLuaConfig = ''        
+      extraLuaConfig = ''
         require("lazy-bootstrap")
         require("options")
         require("lazy").setup("plugins")
       '';
 
-      
     };
 
     home.file.".config/nvim".source = ./config;
