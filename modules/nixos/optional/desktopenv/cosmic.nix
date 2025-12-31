@@ -1,7 +1,7 @@
 {
   config,
-  pkgs,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -24,12 +24,15 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    services.displayManager.cosmic-greeter.enable = true;
-
-    services.desktopManager.cosmic.enable = true;
-    services.desktopManager.cosmic.xwayland.enable = true;
-    services.power-profiles-daemon.enable = false;
-    services.system76-scheduler.enable = true;
+    services = {
+      displayManager.cosmic-greeter.enable = true;
+      desktopManager.cosmic = {
+        enable = true;
+        xwayland.enable = true;
+      };
+      power-profiles-daemon.enable = false;
+      system76-scheduler.enable = true;
+    };
     hardware.system76.enableAll = true;
   };
 }

@@ -27,18 +27,24 @@
     apps.mathematica.enable = true;
   };
 
-  hardware.graphics.enable = true;
+  hardware = {
+    graphics.enable = true;
+    nvidia.open = true;
+  };
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.open = true;
 
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
-  environment.systemPackages = with pkgs; [ cacert ];
-  environment.variables.SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
-  environment.variables.SSL_CERT_DIR = "${pkgs.cacert}/etc/ssl/certs";
+  environment = {
+    systemPackages = with pkgs; [ cacert ];
+    variables = {
+      SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
+      SSL_CERT_DIR = "${pkgs.cacert}/etc/ssl/certs";
+    };
+  };
   services.rstudio-server.enable = true;
 
   virtualisation.vmware.host = {

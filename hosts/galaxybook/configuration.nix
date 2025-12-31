@@ -1,7 +1,5 @@
 {
-  config,
   pkgs,
-  inputs,
   ...
 }:
 {
@@ -29,9 +27,13 @@
     virtualisation.docker.enable = true;
   };
 
-  environment.systemPackages = with pkgs; [ cacert ];
-  environment.variables.SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
-  environment.variables.SSL_CERT_DIR = "${pkgs.cacert}/etc/ssl/certs";
+  environment = {
+    systemPackages = with pkgs; [ cacert ];
+    variables = {
+      SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
+      SSL_CERT_DIR = "${pkgs.cacert}/etc/ssl/certs";
+    };
+  };
   services.rstudio-server.enable = true;
 
   system.stateVersion = "25.05";

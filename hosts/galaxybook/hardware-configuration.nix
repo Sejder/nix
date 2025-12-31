@@ -4,7 +4,6 @@
 {
   config,
   lib,
-  pkgs,
   modulesPath,
   ...
 }:
@@ -14,17 +13,21 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = [
-    "xhci_pci"
-    "thunderbolt"
-    "nvme"
-    "usb_storage"
-    "sd_mod"
-    "rtsx_usb_sdmmc"
-  ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+  boot = {
+    initrd = {
+      availableKernelModules = [
+        "xhci_pci"
+        "thunderbolt"
+        "nvme"
+        "usb_storage"
+        "sd_mod"
+        "rtsx_usb_sdmmc"
+      ];
+      kernelModules = [ ];
+    };
+    kernelModules = [ "kvm-intel" ];
+    extraModulePackages = [ ];
+  };
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/ab150b62-ebf7-4133-9d73-2ebcfdf92689";

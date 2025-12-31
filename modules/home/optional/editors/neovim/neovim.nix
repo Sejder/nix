@@ -34,8 +34,10 @@ in
 
     };
 
-    home.file.".config/nvim".source = ./config;
-    home.file.".config/nvim".recursive = true;
+    home.file.".config/nvim" = {
+      source = ./config;
+      recursive = true;
+    };
 
     home.packages = with pkgs; [
       pyright

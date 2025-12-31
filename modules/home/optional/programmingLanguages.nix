@@ -74,24 +74,25 @@ in
         python312
       ];
 
-      programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
-        ms-python.python
-        ms-python.pylint
-        ms-python.vscode-pylance
-        ms-python.black-formatter
-      ];
-
-      programs.vscode.profiles.default.userSettings = {
-        "python.defaultInterpreterPath" = "/etc/profiles/per-user/${config.home.username}/bin/python";
-        "python.analysis.typeCheckingMode" = "standard";
-        "python.editor.defaultFormatter" = "ms-python.black-formatter";
+      programs = {
+        vscode.profiles.default = {
+          extensions = with pkgs.vscode-extensions; [
+            ms-python.python
+            ms-python.pylint
+            ms-python.vscode-pylance
+            ms-python.black-formatter
+          ];
+          userSettings = {
+            "python.defaultInterpreterPath" = "/etc/profiles/per-user/${config.home.username}/bin/python";
+            "python.analysis.typeCheckingMode" = "standard";
+            "python.editor.defaultFormatter" = "ms-python.black-formatter";
+          };
+        };
+        zed-editor.extensions = [
+          "python"
+        ];
+        nvf.settings.vim.languages.python.enable = true;
       };
-
-      programs.zed-editor.extensions = [
-        "python"
-      ];
-
-      programs.nvf.settings.vim.languages.python.enable = true;
     })
 
     (lib.mkIf cfg.java.enable {
@@ -100,15 +101,15 @@ in
         gradle
       ];
 
-      programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
-        vscjava.vscode-java-pack
-      ];
-
-      programs.zed-editor.extensions = [
-        "java"
-      ];
-
-      programs.nvf.settings.vim.languages.java.enable = true;
+      programs = {
+        vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
+          vscjava.vscode-java-pack
+        ];
+        zed-editor.extensions = [
+          "java"
+        ];
+        nvf.settings.vim.languages.java.enable = true;
+      };
     })
 
     (lib.mkIf cfg.c.enable {
@@ -129,15 +130,15 @@ in
         rustup
       ];
 
-      programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
-        rust-lang.rust-analyzer
-      ];
-
-      programs.zed-editor.extensions = [
-        "rust"
-      ];
-
-      programs.nvf.settings.vim.languages.rust.enable = true;
+      programs = {
+        vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
+          rust-lang.rust-analyzer
+        ];
+        zed-editor.extensions = [
+          "rust"
+        ];
+        nvf.settings.vim.languages.rust.enable = true;
+      };
     })
 
     (lib.mkIf cfg.R.enable {
@@ -170,17 +171,16 @@ in
           pkgs.pandoc
         ];
 
-      programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
-        reditorsupport.r
-        reditorsupport.r-syntax
-      ];
-
-      programs.zed-editor.extensions = [
-        "R"
-      ];
-
-      programs.nvf.settings.vim.languages.r.enable = true;
-
+      programs = {
+        vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
+          reditorsupport.r
+          reditorsupport.r-syntax
+        ];
+        zed-editor.extensions = [
+          "R"
+        ];
+        nvf.settings.vim.languages.r.enable = true;
+      };
     })
 
     (lib.mkIf cfg.c-sharp.enable {
