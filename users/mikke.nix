@@ -44,6 +44,7 @@
     packages = with pkgs; [
       poppler-utils
       yarn
+      zoom-us
     ];
   };
 
