@@ -18,17 +18,17 @@ in {
         monitoring.enable = true;
         ssh.enable = true;
         nas.netgear.enable = true;
+        dokploy.enable = true;
+        webapp.enable = true;
       };
       settings = {
         audio.enable = false;
         boot.autoBoot.enable = true;
       };
-
     };
     services.getty = {
       autologinOnce = true;
       autologinUser = config.systemUsers.primaryUser;
     };
-
   };
 }
