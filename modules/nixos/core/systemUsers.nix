@@ -2,15 +2,21 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   cfg = config.systemUsers;
-in {
+in
+{
   options.systemUsers = {
     users = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-      default = [];
+      default = [ ];
       description = "List of users to create on this system";
-      example = ["mikke" "spouse" "kids"];
+      example = [
+        "mikke"
+        "spouse"
+        "kids"
+      ];
     };
 
     primaryUser = lib.mkOption {
@@ -24,7 +30,7 @@ in {
   config = {
     assertions = [
       {
-        assertion = cfg.users != [];
+        assertion = cfg.users != [ ];
         message = "systemUsers.users must be set at the host level with at least one user.";
       }
       {

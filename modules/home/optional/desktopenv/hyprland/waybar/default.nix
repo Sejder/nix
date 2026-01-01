@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   cfg = config.features.desktopenv.hyprland.waybar;
@@ -8,7 +13,7 @@ in
 
     programs.waybar = {
       enable = true;
-            
+
     };
 
     home.packages = with pkgs; [

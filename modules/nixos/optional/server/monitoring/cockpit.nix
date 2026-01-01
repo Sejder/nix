@@ -5,8 +5,8 @@
     services.cockpit = {
       enable = true;
       allowed-origins = [
-          "http://cockpit.${config.networking.hostName}"
-          ];
+        "http://cockpit.${config.networking.hostName}"
+      ];
       settings = {
         WebService = {
           AllowUnencrypted = true;

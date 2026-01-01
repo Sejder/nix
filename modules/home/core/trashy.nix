@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   cfg = config.features.trashy;
 in
@@ -12,7 +17,7 @@ in
   config = lib.mkIf cfg.enable {
 
     home.packages = with pkgs; [
-        trashy
+      trashy
     ];
   };
 }

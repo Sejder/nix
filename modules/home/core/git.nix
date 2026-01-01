@@ -3,9 +3,11 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.features.git;
-in {
+in
+{
   options.features.git.enable = lib.mkOption {
     type = lib.types.bool;
     default = true;
@@ -16,6 +18,7 @@ in {
     home.packages = with pkgs; [
       git
       lazygit
+      gh
     ];
 
     programs.git = {

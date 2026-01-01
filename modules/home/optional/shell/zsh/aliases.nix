@@ -3,9 +3,11 @@
   lib,
   hostName,
   ...
-}: let
+}:
+let
   cfg = config.features.shell.zsh;
-in {
+in
+{
   config = lib.mkIf cfg.enable {
     # Aliases
     programs.zsh.shellAliases = {
@@ -42,4 +44,3 @@ in {
     };
   };
 }
-

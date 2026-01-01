@@ -1,4 +1,8 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  lib,
+  ...
+}:
 
 let
   cfg = config.features.desktopenv.plasma;
@@ -9,12 +13,12 @@ in
       type = lib.types.bool;
       default =
         let
-          users = config.systemUsers.users or ["mikke"];
-          anyUserHasPlasma = lib.any (user:
-            config.home-manager.users.${user}.features.desktopenv.plasma.enable or false
+          users = config.systemUsers.users or [ "mikke" ];
+          anyUserHasPlasma = lib.any (
+            user: config.home-manager.users.${user}.features.desktopenv.plasma.enable or false
           ) users;
         in
-          anyUserHasPlasma;
+        anyUserHasPlasma;
       description = "Enable KDE Plasma desktop environment";
     };
   };
@@ -25,7 +29,7 @@ in
 
     security.pam.services.sddm.kwallet = {
       enable = true;
-    };  
+    };
 
     # Disable power-profiles-daemon to avoid conflict with TLP
     services.power-profiles-daemon.enable = false;

@@ -1,9 +1,7 @@
 {
-  config,
-  pkgs,
-  inputs,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos
@@ -12,7 +10,7 @@
   networking.hostName = "home";
   networking.firewall.allowedTCPPorts = [80 443 3000];
   systemUsers = {
-    users = ["mikke"];
+    users = [ "mikke" ];
     primaryUser = "mikke";
   };
 

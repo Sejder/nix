@@ -35,7 +35,7 @@ in
             provider = "copilot_chat";
             model = "gpt-5-mini";
           };
-          model_parameters = [];
+          model_parameters = [ ];
         };
         git = {
           inline_blame = {

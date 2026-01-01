@@ -3,9 +3,11 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.features.server.nas.netgear;
-in {
+in
+{
   options.features.server.nas.netgear = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -44,7 +46,7 @@ in {
     fileSystems."/data" = {
       device = "192.168.87.165:/c/netgear";
       fsType = "nfs";
-      options = ["vers=3"];
+      options = [ "vers=3" ];
     };
   };
 }

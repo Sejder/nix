@@ -1,4 +1,10 @@
-{config, pkgs, lib, deviceType, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  deviceType,
+  ...
+}:
 
 let
   cfg = config.features.documentWriters.latex;
@@ -12,11 +18,10 @@ in
       description = "Enable latex";
     };
 
-
   };
 
   config = lib.mkIf (cfg.enable && deviceType == "laptop") {
-    
+
     home.packages = with pkgs; [
       texliveFull
     ];

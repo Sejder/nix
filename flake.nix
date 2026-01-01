@@ -36,7 +36,6 @@
 
   outputs =
     {
-      self,
       nixpkgs,
       nixpkgs-unstable,
       home-manager,
@@ -68,8 +67,8 @@
         plasma-manager.homeModules.plasma-manager
       ];
 
-      customLib = import ./lib { lib = nixpkgs.lib; };
-      lib = nixpkgs.lib.extend (self: super: { custom = customLib; });
+      customLib = import ./lib { inherit (nixpkgs) lib; };
+      lib = nixpkgs.lib.extend (_self: _super: { custom = customLib; });
 
       mkHost =
         hostName:
@@ -91,7 +90,7 @@
                   backupCommand = "${pkgs.trashy}/bin/trash";
 
                   extraSpecialArgs = sharedExtraArgs // {
-                    hostName = config.networking.hostName;
+                    inherit (config.networking) hostName;
                     deviceType = config.device.type;
                   };
 

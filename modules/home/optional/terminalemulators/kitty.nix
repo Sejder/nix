@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   cfg = config.features.terminalEmulators.kitty;
 in
@@ -10,13 +15,13 @@ in
       description = "Enable Kitty";
     };
   };
-  
+
   config = lib.mkIf cfg.enable {
     programs.kitty = {
       enable = true;
       settings = {
         "shell" = "${pkgs.zsh}/bin/zsh";
-        "font_family" = "JetBrainsMono Nerd Font"; 
+        "font_family" = "JetBrainsMono Nerd Font";
         "font_size" = 12;
         "bold_font" = "auto";
         "italic_font" = "auto";

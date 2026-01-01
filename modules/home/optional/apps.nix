@@ -1,12 +1,13 @@
 {
   config,
   pkgs,
-  unstable-pkgs,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.features.apps;
-in {
+in
+{
   options.features.apps = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -33,8 +34,12 @@ in {
       pkgs.geogebra
     ];
 
-    features.scripts.obsidian-startup.enable = true;
-    features.documentWriters.latex.enable = true;
-    features.documentWriters.typst.enable = true;
+    features = {
+      scripts.obsidian-startup.enable = true;
+      documentWriters = {
+        latex.enable = true;
+        typst.enable = true;
+      };
+    };
   };
 }

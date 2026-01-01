@@ -1,4 +1,7 @@
-{ config, pkgs, lib, ... }:
+{
+  lib,
+  ...
+}:
 
 let
   # Import your custom lib directly - no dependency on config

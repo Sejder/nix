@@ -4,7 +4,8 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   ytdownload = pkgs.writeScriptBin "ytdownload" ''
     #!/${pkgs.zsh}/bin/zsh
     set -e
@@ -32,7 +33,8 @@ with lib; let
     # Clean up - remove the temporary Videos directory
     rm -rf ./Videos
   '';
-in {
+in
+{
   options.features.scripts.ytdownloader = {
     enable = mkEnableOption "Enable ytdownload script for downloading YouTube videos with yt-dlp via uv and moving to Nextcloud via rclone";
   };

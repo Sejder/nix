@@ -3,7 +3,8 @@
   pkgs,
   deviceType ? "",
   ...
-}: {
+}:
+{
   imports = [
     ../modules/home
   ];
@@ -43,6 +44,7 @@
     packages = with pkgs; [
       poppler-utils
       yarn
+      zoom-us
     ];
   };
 

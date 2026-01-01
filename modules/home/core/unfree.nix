@@ -2,9 +2,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.allowUnfree;
-in {
+in
+{
   options.allowUnfree = {
     enable = lib.mkOption {
       type = lib.types.bool;

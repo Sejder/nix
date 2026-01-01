@@ -3,9 +3,11 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.features.server.nginx;
-in {
+in
+{
   options.features.server.nginx.enable = lib.mkOption {
     type = lib.types.bool;
     default = false;
@@ -22,4 +24,3 @@ in {
     ];
   };
 }
-

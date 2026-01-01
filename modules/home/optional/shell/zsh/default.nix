@@ -1,4 +1,9 @@
-{config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   cfg = config.features.shell.zsh;
@@ -17,10 +22,16 @@ in
       syntaxHighlighting.enable = true;
       autosuggestion.enable = true;
 
-      history.size = 10000;
-      history.ignoreAllDups = true;
-      history.path = "$HOME/.zsh_history";
-      history.ignorePatterns = ["rm *" "pkill *" "cp *"];
+      history = {
+        size = 10000;
+        ignoreAllDups = true;
+        path = "$HOME/.zsh_history";
+        ignorePatterns = [
+          "rm *"
+          "pkill *"
+          "cp *"
+        ];
+      };
     };
 
     home.sessionVariables = {
@@ -28,7 +39,7 @@ in
     };
 
     programs.starship.enable = true;
-    
+
     home.packages = with pkgs; [
       eza
       fastfetch

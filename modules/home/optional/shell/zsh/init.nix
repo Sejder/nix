@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   cfg = config.features.shell.zsh;
@@ -25,7 +30,7 @@ in
         export ZSH="${pkgs.zsh}/bin/zsh"
         export ZSH_HIGHLIGHT_STYLES='bg=blue'
         export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan'
-      '';
+    '';
   };
 
 }

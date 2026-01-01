@@ -3,9 +3,11 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.features.displayManagers.sddm;
-in {
+in
+{
   options.features.displayManagers.sddm.enable = lib.mkOption {
     type = lib.types.bool;
     default = false;
@@ -21,15 +23,14 @@ in {
       };
     };
 
-    environment.systemPackages = [(
-      pkgs.catppuccin-sddm.override {
+    environment.systemPackages = [
+      (pkgs.catppuccin-sddm.override {
         flavor = "macchiato";
         accent = "teal";
-        font  = "JetBrains Mono";
+        font = "JetBrains Mono";
         fontSize = "18";
         loginBackground = true;
-      }
-    )];
+      })
+    ];
   };
 }
-

@@ -2,9 +2,12 @@
 
 {
   nixpkgs.config.allowUnfree = true;
-  
+
   nix = {
-    settings.experimental-features = [ "flakes" "nix-command" ];
+    settings.experimental-features = [
+      "flakes"
+      "nix-command"
+    ];
 
     optimise = {
       automatic = true;

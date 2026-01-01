@@ -1,11 +1,12 @@
 {
   config,
   lib,
-  inputs,
   ...
-}: let
+}:
+let
   cfg = config.features.editors.nvf;
-in {
+in
+{
   options.features.editors.nvf = {
     enable = lib.mkOption {
       type = lib.types.bool;
