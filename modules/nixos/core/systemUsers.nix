@@ -14,8 +14,6 @@ in
       description = "List of users to create on this system";
       example = [
         "mikke"
-        "spouse"
-        "kids"
       ];
     };
 
@@ -28,6 +26,8 @@ in
   };
 
   config = {
+    nix.settings.trusted-users = [ "root" ] ++ cfg.users;
+
     assertions = [
       {
         assertion = cfg.users != [ ];

@@ -39,7 +39,10 @@
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
   environment = {
-    systemPackages = with pkgs; [ cacert ];
+    systemPackages = with pkgs; [
+      cacert
+      sublime4
+    ];
     variables = {
       SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
       SSL_CERT_DIR = "${pkgs.cacert}/etc/ssl/certs";
@@ -51,6 +54,12 @@
     enable = true;
     package = pkgs.vmware-workstation;
   };
+
+  nixpkgs.config.allowUnfree = true;
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "openssl-1.1.1w"
+  ];
 
   system.stateVersion = "25.05";
 }

@@ -3,11 +3,9 @@
   unstable-pkgs,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.features.chatbots.gemini;
-in
-{
+in {
   options.features.chatbots.gemini = {
     enable = lib.mkOption {
       type = lib.types.bool;

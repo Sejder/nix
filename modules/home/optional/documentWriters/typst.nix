@@ -46,7 +46,7 @@ in
         tinymist.exportPdf = "onType";
         tinymist.statusBarFormat = "{compileStatusIcon} {wordCount} {charCount} [{fileName}]";
         github.copilot.enable = {
-          "typst" = false;
+          "typst" = true;
         };
       };
     };

@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  unstable-pkgs,
   lib,
   ...
 }:
@@ -24,7 +25,6 @@ in
 
   config = lib.mkMerge [
     {
-      # Nix tools always available (this is a NixOS config)
       home.packages = with pkgs; [
         nil
         nixd
@@ -41,7 +41,7 @@ in
     })
 
     (lib.mkIf cfg.devenv.enable {
-      home.packages = with pkgs; [
+      home.packages = with unstable-pkgs; [
         devenv
       ];
     })
